@@ -1,5 +1,5 @@
 /**
- * 读取指webpack生成模板 并混入react服务器端html代码
+ * 读取指webpack生成模板 并混入vue服务器端html代码
  */
 import  fs from 'fs';
 import  path from 'path';

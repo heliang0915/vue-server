@@ -1,6 +1,3 @@
-/**
- * Created by lenovo on 2017/6/11.
- */
 import 'babel-polyfill';
 import  axios from 'axios';
 // import Vue from 'vue';
@@ -24,7 +21,6 @@ import  axios from 'axios';
 // }, function (error) {
 //     return Promise.reject(error)
 // })
-
 
 let Fetch = {
     baseURl: "/",

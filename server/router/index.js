@@ -1,29 +1,13 @@
 import express  from 'express';
-// import app from '../../src/app';
 import createApp from '../../src/entry-server';
 const renderer = require('vue-server-renderer').createRenderer();
-
-// import  {createApp} from '../../src/app';
-// import  React from 'react';
-// import {match,RouterContext} from 'react-router';
-// import {Provider} from 'react-redux';
-// import {renderToString} from 'react-dom/server';
-// import getStoreConfig from '../../src/redux/store/store'
-// import routes from '../../src/routers/routes';
 import helper from '../helper';
 import {templateName} from '../config';
-// import RouterMap from '../../src/routermaps';
-// import {fetchIndex} from '../../src/redux/actions/index/indexaction';
-
-
 let router=express.Router();
-
-
 router.route("*").all((req,res,next)=>{
     let context={
         url:req.originalUrl
     }
-
     createApp(context).then(({app,initialState})=>{
         renderer.renderToString(app,(err,html)=>{
             if (err) {
@@ -41,59 +25,11 @@ router.route("*").all((req,res,next)=>{
                     })
             }
         })
-
     }).catch((err)=>{
         next();
-        console.log(err);
     })
 
 })
-// console.log(">>>>"+renderer);
-
-// let app=new Vue({
-//     template: `<div>Hello World</div>`
-// })
-
-
-// router.route('/').all((req,res)=>{
-//     renderer.renderToString(app,(err,html)=>{
-//         if (err) {
-//             res.status(500).end('Internal Server Error')
-//             return
-//         }
-//         res.send(html);
-//     })
-// })
-
-// RouterMap.map((item)=>{
-//     router.route(item.path).all((req,res)=>{
-//         match({routes,location:req.originalUrl},(err,redirectLocation,renderPorps)=>{
-//             if(err){
-//                 res.status(500).end(`Internal Server Error ${err}`);
-//             }else if(redirectLocation){
-//                 res.redirect(redirectLocation.pathname + redirectLocation.search);
-//             }else if(renderPorps){
-//                 let store=getStoreConfig();
-//                 // Promise.all([store.dispatch(fetchIndex())]).then(()=>{
-//
-//                     let html=renderToString(<Provider store={store}><RouterContext {...renderPorps} /></Provider>);
-//                     let initialState=store.getState();
-//                     console.log(html);
-//                     helper.getHTMLFormTemplate(templateName,{
-//                         body:html,
-//                         initialState:JSON.stringify(initialState)
-//                     },(err,page)=>{
-//                         res.send(page);
-//                     })
-//                 // })
-//             }else{
-//                 res.send("404");
-//             }
-//         })
-//
-//     })
-// })
-
 router.route('/data').all((req,res)=> {
     let data = [{
         "guid": "258944",

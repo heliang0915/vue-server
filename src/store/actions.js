@@ -6,13 +6,9 @@ import * as types from './mutaion-types';
 import fetch from '../util/fetch';
 
 export const fetchIndexList=({commit})=>{
-
-
-    return fetch.get('https://api.github.com/users').then((res)=>res.data).then((data)=>{
+    return fetch.get('http://localhost:4000/data').then((res)=>res.data).then((data)=>{
         commit(types.FETCH_INDEX_LIST,data)
     });
-
-    
 }
 
 

@@ -1,7 +1,6 @@
 var path = require('path')
 var webpack=require("webpack");
 var fs=require("fs");
-
 require('babel-register');
 let helper=require('./helper');
 var ExtractTextPlugin=require("extract-text-webpack-plugin");
@@ -73,17 +72,6 @@ let clientConfig = {
       }
     ],
   },
-  // devServer: {
-  //     publicPath: "/",
-  //     colors:true,
-  //     stats: { colors: true },
-  //     host:helper.getLocalIp(),
-  //     port: 8020,
-  //     inline: true,
-  //     historyApiFallback:true,
-  //     hot:true,
-  //     compress: true
-  // },
   vue: {
     loaders:{
       css:ExtractTextPlugin.extract("css")
@@ -114,7 +102,7 @@ let clientConfig = {
           title:"开发环境"
       }),
       new OpenBrowserWebpackPlugin({
-            url:"http://"+helper.getLocalIp()+":8020"
+            url:"http://"+helper.getLocalIp()+":4000"
       })
   ]
 }
@@ -168,12 +156,12 @@ let serverConfig = {
     externals: getExternals(),
     resolve: {extensions: ['', '.js', '.json', '.css','.vue']},
     plugins: [
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {warnings: false},
-            comments: false
-        }),
+        // new webpack.optimize.OccurrenceOrderPlugin(),
+        // new webpack.optimize.DedupePlugin(),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {warnings: false},
+        //     comments: false
+        // }),
         new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(env)})
     ]
 }

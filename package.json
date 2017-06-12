@@ -4,10 +4,10 @@
   "description": "vue-server",
   "main": "index.js",
   "scripts": {
-    "server_dev": "export NODE_ENV=development&& node ./build/dev_server/app",
-    "server_pro": "export NODE_ENV=production&& node ./build/server/app",
-    "dev": "export NODE_ENV=development&&webpack -p --progress --profile --config webpack.dev.config.js",
-    "pro": "export NODE_ENV=production&&webpack -p --progress --profile --config webpack.pro.config.js"
+    "server_dev": "set NODE_ENV=development&& supervisor -w server,src  ./build/dev_server/app",
+    "server_pro": "set NODE_ENV=production&& node ./build/server/app",
+    "dev": "set NODE_ENV=development&&webpack -p --watch --progress --profile --config webpack.dev.config.js",
+    "pro": "set NODE_ENV=production&&webpack -p --progress --profile --config webpack.pro.config.js"
   },
   "author": "heliang0915",
   "license": "ISC",
