@@ -1,6 +1,7 @@
-var path = require('path')
+var path = require('path');
+var fs=require('fs');
 var webpack=require("webpack");
-var WebpackDevServer=require("webpack-dev-server");
+require('babel-register');
 var ExtractTextPlugin=require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -11,16 +12,20 @@ var CommonsChunkPlugin=webpack.optimize.CommonsChunkPlugin;
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH=path.resolve(ROOT_PATH,'src/app.js');
 var BUILD_PATH=path.resolve(ROOT_PATH,'build');
+// let {env,conf,templateName}=require("./server/config");
+let {env,templateName}=require("./server/config");
+console.log("env>>"+env);
 console.log("生产环境配置......");
 
-module.exports = {
+var clientConfig={
   entry: {
     // app: APP_PATH,
-    app:['vue','vue-router','axios','vuex','myapp']
+    app:path.resolve(__dirname,'src/entry-client.js'),
+    libs:['vue','vue-router','axios','vuex']
   },
   output: {
-    path:BUILD_PATH,
-    publishPath: '/build/',
+    path:BUILD_PATH+"/"+env,
+    publishPath: '/build/'+env,
     filename: '[name].js?[hash]'
   },
   resolve: {
@@ -33,8 +38,7 @@ module.exports = {
       'vue':ROOT_PATH+'/node_modules/vue/dist/vue.min.js',
       'vue-router':ROOT_PATH+'/node_modules/vue-router/dist/vue-router.min.js',
       'axios':ROOT_PATH+'/node_modules/axios/dist/axios.js',
-      'vuex':ROOT_PATH+'/node_modules/vuex/dist/vuex.min.js',
-      'myapp':APP_PATH
+      'vuex':ROOT_PATH+'/node_modules/vuex/dist/vuex.min.js'
     }
   },
   module: {
@@ -89,8 +93,8 @@ module.exports = {
       }),
       //合并第三方代码(将第三方代码和本地代码统一合并成一个文件)
       new CommonsChunkPlugin({
-        name:"app",
-        filename:"app.js?[hash]",
+        name:"libs",
+        filename:"libs.js?[hash]",
         minChunks:Infinity
       }),
       //压缩时去掉警告
@@ -107,9 +111,70 @@ module.exports = {
       new ExtractTextPlugin("[name].css?[hash]"),
       //自动生成模版
       new HtmlWebpackPlugin({
-          template: path.join(__dirname, 'index.ejs'),
-           title:"生产环境"
+          template: path.join(__dirname, '/template/index.ejs'),
+          filename:templateName+'.html',
+          title:"生产环境"
       }),
       new webpack.NoErrorsPlugin()
   ]
 }
+
+
+function getExternals() {
+    return fs.readdirSync(path.resolve(__dirname, './node_modules'))
+        .filter(filename => !filename.includes('.bin'))
+        .reduce((externals, filename) => {
+            externals[filename] = `commonjs ${filename}`
+
+            return externals
+        }, {})
+}
+
+let serverConfig = {
+    entry: {
+        app:path.resolve(__dirname,'server/app.js')
+    },
+    output: {
+        path: path.resolve(__dirname, 'build/server'),
+        filename: '[name].js'
+    },
+    target: 'node',
+    node: {
+        __filename: true,
+        __dirname: true
+    },
+    module: {
+        loaders: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'babel'
+        },{
+            test: /\.vue$/,
+            loader: 'vue'
+        }, {
+            test: /\.css/,
+            loaders: [
+                'css/locals',
+            ]
+        },{
+            test: /\.(png|jpe?g|gif)(\?.*)?$/,
+            loader: 'url-loader?limit=1&name=assets/images/[name].[ext]?[hash]'
+        }, {
+            test: /\.json$/,
+            loader: 'json'
+        }]
+    },
+    externals: getExternals(),
+    resolve: {extensions: ['', '.js', '.json', '.css','.vue']},
+    plugins: [
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {warnings: false},
+            comments: false
+        }),
+        new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(env)})
+    ]
+}
+
+module.exports= [clientConfig,serverConfig];
