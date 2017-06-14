@@ -3,8 +3,7 @@
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import index from  './views/index.vue';
-import about from  './views/about.vue';
+import { indexComponent,aboutComponent} from './routes/asyncRoutes';
 
 Vue.use(VueRouter);
 
@@ -16,8 +15,11 @@ let getConfig = () => {
     let config = {};
     config.mode = "history";
     config.routes = [
-        {path: '/', component: index},
-        {path: '/about', component: about}
+        {path: '/', component: indexComponent},
+        {path: '/about', component: aboutComponent}
     ]
     return config;
 };
+
+
+

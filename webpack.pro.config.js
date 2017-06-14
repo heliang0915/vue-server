@@ -26,7 +26,8 @@ var clientConfig={
   output: {
     path:BUILD_PATH+"/"+env,
     publishPath: '/build/'+env,
-    filename: '[name].js?[hash]'
+    filename: '[name].js?[hash]',
+    chunkFilename: "[name].chunk.js"//给require.ensure用
   },
   resolve: {
     extensions: ['', '.js', '.vue','.css'],

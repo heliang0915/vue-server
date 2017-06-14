@@ -50,7 +50,7 @@ let server=http.createServer(app);
 
 server.listen(port)
 let onListening=()=>{
-    console.log("react渲染服务器启动.. 端口:%s",port);
+    console.log("vue2渲染服务器启动.. 端口:%s",port);
 }
 let onError=(err)=>{
     if(err.code=="EADDRINUSE"){

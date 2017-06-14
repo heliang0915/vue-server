@@ -24,7 +24,8 @@ let clientConfig = {
   output: {
     path:BUILD_PATH+"/"+env,
     publishPath: '/build/'+env,
-    filename: '[name].js?[hash]'
+    filename: '[name].js?[hash]',
+    chunkFilename: "[name].chunk.js"//给require.ensure用
   },
   resolve: {
     extensions: ['', '.js', '.vue','.css'],
@@ -80,6 +81,10 @@ let clientConfig = {
   devtool:"#source-map",
   //第三方库配置
   plugins:[
+      // new webpack.DllReferencePlugin({
+      //     context: __dirname,
+      //     manifest: require('./build/vendor-manifest.json')
+      // }),
       //合并第三方代码
       new CommonsChunkPlugin({
         name:"libs",

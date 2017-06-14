@@ -1,6 +1,6 @@
 <template>
     <section>
-        index
+        index1
         {{data.list}}
         <button @click="fetchIndexList">点击</button>
     </section>
