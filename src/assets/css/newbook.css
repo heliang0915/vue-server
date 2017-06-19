@@ -1,0 +1,9 @@
+.side-left {
+    float: left;
+    width: 228px;
+    border: 1px solid #eee;
+}
+.side-right {
+    float: left;
+    width: 768px;
+}

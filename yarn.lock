@@ -4006,6 +4006,12 @@ vue@^2.0.3:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.3.4.tgz#5ec3b87a191da8090bbef56b7cfabd4158038171"
 
+vueg@^1.1.94:
+  version "1.1.94"
+  resolved "http://registry.npm.taobao.org/vueg/download/vueg-1.1.94.tgz#630f2dea883e2ae4b0b13a92938e38e7ffd5fa27"
+  dependencies:
+    vuet "^0.0.6"
+
 vuegister@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/vuegister/-/vuegister-0.2.1.tgz#0a8eb7532079925646a8592dfa61f77274797f69"
@@ -4014,6 +4020,10 @@ vuegister@^0.2.1:
     htmlparser2 "^3.9.2"
     source-map "^0.5.6"
     source-map-support "^0.4.8"
+
+vuet@^0.0.6:
+  version "0.0.6"
+  resolved "http://registry.npm.taobao.org/vuet/download/vuet-0.0.6.tgz#8b0efa505c2e9085b7995c54248748c409df0fee"
 
 vuex@^2.0.0:
   version "2.3.1"

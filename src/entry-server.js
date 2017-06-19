@@ -8,10 +8,10 @@ export default  context=>{
         const { app, router,store } = createApp()
         // set server-side router's location
         router.push(context.url)
-        let initialState=store.state;
+
         // wait until router has resolved possible async components and hooks
         router.onReady(() => {
-            let matchedComponents = router.getMatchedComponents()
+            let matchedComponents = router.getMatchedComponents();
             // no matched routes, reject with 404
             if (!matchedComponents.length) {
                 reject({ code: 404 })
@@ -22,7 +22,8 @@ export default  context=>{
                 }
             })
             Promise.all(ary).then(() => {
-                resolve({app,initialState:store.state})
+                let initialState=store.state;
+                resolve({app,initialState})
             }).catch((err)=>{
                 reject(err);
                 console.log(err);

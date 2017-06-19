@@ -3,7 +3,7 @@
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { indexComponent,aboutComponent} from './routes/asyncRoutes';
+import { indexComponent,aboutComponent,linkmeCompoent} from './routes/asyncRoutes';
 
 Vue.use(VueRouter);
 
@@ -16,6 +16,7 @@ let getConfig = () => {
     config.mode = "history";
     config.routes = [
         {path: '/', component: indexComponent},
+        {path: '/linkme/:id', component: linkmeCompoent},
         {path: '/about', component: aboutComponent}
     ]
     return config;

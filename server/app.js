@@ -34,7 +34,7 @@ if(env=="development"){
     //         }
     //     }
     // })
-    let loader=require('require-extension-vue');
+    // let loader=require('require-extension-vue');
     //
     // loader.script.register('babel', function(content,filePath,index){
     //     return content;

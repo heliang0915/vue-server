@@ -1,0 +1,55 @@
+.rank-item {
+    width: 25%;
+    margin-top: 30px;
+    float: left;
+}
+
+.rank-item h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.rank-item ul {
+    padding-right: 25px;
+}
+
+.rank-item ul li {
+    border-bottom: 1px solid #ccc;
+    padding: 7px 0;
+}
+
+.rank-item ul li a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.rank-item ul li a:hover {
+    color: #ff3955 !important;
+}
+
+.rank-item ul li em {
+    display: inline-block;
+    height: 18px;
+    font-size: 13px;
+    width: 18px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.rank-item ul .first em {
+    background: #ff3955;
+    color: #FFF;
+}
+
+.rank-item ul .second em {
+    background: #e67225;
+    color: #FFF;
+}
+
+.rank-item ul .three em {
+    background: #e6bf25;
+    color: #FFF;
+}
