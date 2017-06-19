@@ -2,7 +2,8 @@
  * Created by hotread on 2017/6/8.
  */
 import fetch from 'isomorphic-fetch';
-let apiURl="https://api.github.com";
+import {conf} from '../config';
+let apiURl=conf.proxyApi;
 
 //转发请求
 export default function(url){
@@ -23,6 +24,8 @@ export default function(url){
             url=apiURl+pathName+"?"+queryStr;
         }
     }
+
+    url+=".json"
 
     console.log("代理后的url地址[%s]",url)
 

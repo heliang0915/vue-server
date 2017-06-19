@@ -17,7 +17,19 @@ export default  context=>{
                 reject({ code: 404 })
             }
             let ary=matchedComponents.map(component => {
+                // console.log(component);
+                let components=component.components;
+                if(Object.keys(components).length>0){
+                    for(var key in components){
+                        var childComponent=components[key];
+                        if (childComponent.asyncData) {
+                            console.log("匹配发送异步请求 inner..."+childComponent.asyncData)
+                            return childComponent.asyncData(store)
+                        }
+                    }
+                }
                 if (component.asyncData) {
+                    console.log("匹配发送异步请求..."+component.asyncData)
                     return component.asyncData(store)
                 }
             })

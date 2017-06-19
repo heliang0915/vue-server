@@ -6,11 +6,13 @@ let templateName="template";
 let config={
     development:{
         port:4000,
-        api:'http://localhost:4000/api'
+        api:'http://localhost:4000/api',
+        proxyApi:'http://127.0.0.1:3000'
     },
     production:{
         port:5000,
-        api:'http://localhost:5000/api'
+        api:'http://localhost:5000/api',
+        proxyApi:'http://127.0.0.1:3000'
     }
 };
 
