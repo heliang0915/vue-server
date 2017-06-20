@@ -3,6 +3,7 @@
     <div class="limit-free">
         <ul class="limit-free-list">
             <li>
+                <!--limitFree>>> {{limitFree}}-->
                 <div class="free-item-first">
                     <h3>限时免费</h3>
                     <p>VIP章节免费读</p>
@@ -13,64 +14,16 @@
                     <a href="">进入限免频道 &gt;</a>
                 </div>
             </li>
-            <li class="free-item">
+            <li class="free-item" v-for="item in limitFree.list">
                 <div class="free-item-inner">
                     <div class="div-img">
                         <a href="#">
-                            <img src="../assets/images/hot1.jpg" alt="图片">
+                            <img :src="item.pic" alt="图片">
                         </a>
                     </div>
-                    <p><a href="###">总裁来袭：豪门联姻</a></p>
+                    <p><a href="###">{{item.title}}</a></p>
                     <p>
-                        <del>5阅币⁄千字</del>
-                    </p>
-                    <a class="btn" href="">
-                        立即阅读
-                    </a>
-                </div>
-            </li>
-            <li class="free-item">
-                <div class="free-item-inner">
-                    <div class="div-img">
-                        <a href="#">
-                            <img src="../assets/images/hot1.jpg" alt="图片">
-                        </a>
-                    </div>
-                    <p><a href="###">总裁来袭：豪门联姻</a></p>
-                    <p>
-                        <del>5阅币⁄千字</del>
-                    </p>
-                    <a class="btn" href="">
-                        立即阅读
-                    </a>
-                </div>
-            </li>
-            <li class="free-item">
-                <div class="free-item-inner">
-                    <div class="div-img">
-                        <a href="#">
-                            <img src="../assets/images/hot1.jpg" alt="图片">
-                        </a>
-                    </div>
-                    <p><a href="###">总裁来袭：豪门联姻</a></p>
-                    <p>
-                        <del>5阅币⁄千字</del>
-                    </p>
-                    <a class="btn" href="">
-                        立即阅读
-                    </a>
-                </div>
-            </li>
-            <li class="free-item">
-                <div class="free-item-inner">
-                    <div class="div-img">
-                        <a href="#">
-                            <img src="../assets/images/hot1.jpg" alt="图片">
-                        </a>
-                    </div>
-                    <p><a href="###">总裁来袭：豪门联姻</a></p>
-                    <p>
-                        <del>5阅币⁄千字</del>
+                        <del>{{item.price}}</del>
                     </p>
                     <a class="btn" href="">
                         立即阅读
@@ -81,5 +34,24 @@
     </div>
 </template>
 <script>
-   import  '../assets/css/limitfree'
+   import  '../assets/css/limitfree';
+   import {mapGetters,mapActions} from 'vuex';
+
+   export default{
+       methods:{
+           ...mapActions(['fetchLimitFree'])
+       },
+       computed:{
+           ...mapGetters({
+               limitFree:'getLimitFreeList'
+           })
+       },
+       asyncData(store){
+           store.dispatch('fetchLimitFree')
+       },
+       mounted(){
+           this.fetchLimitFree();
+       }
+   }
+
 </script>

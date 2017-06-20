@@ -18,8 +18,12 @@ App.use((req,res,next)=>{
     date.setTime(date.getTime()+cacheTime);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Cache-control","max-age:"+cacheTime);
-    res.header("Expires",date.toUTCString());
+    console.log("req.originalUrl>>>"+req.originalUrl);
+    let url=req.originalUrl;
+    if(url.indexOf('/api/')==1){
+        res.header("Cache-control","max-age:"+cacheTime);
+        res.header("Expires",date.toUTCString());
+    }
     next();
 })
 

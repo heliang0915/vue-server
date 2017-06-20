@@ -6,3 +6,5 @@ export const FETCH_INDEX_LIST="FETCH_INDEX_LIST";
 
 //获取热门小说数据
 export const FETCH_HOT_LIST="FETCH_HOT_LIST";
+//限时免费
+export const FETCH_LIMIT_FREE="FETCH_LIMIT_FREE";

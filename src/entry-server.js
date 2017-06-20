@@ -16,24 +16,34 @@ export default  context=>{
             if (!matchedComponents.length) {
                 reject({ code: 404 })
             }
+            let syncFuns=[];
             let ary=matchedComponents.map(component => {
-                // console.log(component);
+
                 let components=component.components;
+
+                console.log("component>>>"+JSON.stringify(component));
+
+
                 if(Object.keys(components).length>0){
+
                     for(var key in components){
+                        console.log("key>>"+key);
                         var childComponent=components[key];
+                        console.log("childComponent>>>"+JSON.stringify(childComponent.container));
                         if (childComponent.asyncData) {
                             console.log("匹配发送异步请求 inner..."+childComponent.asyncData)
-                            return childComponent.asyncData(store)
+                            syncFuns.push(childComponent.asyncData(store));
                         }
                     }
                 }
+
                 if (component.asyncData) {
                     console.log("匹配发送异步请求..."+component.asyncData)
-                    return component.asyncData(store)
+                    syncFuns.push(component.asyncData(store))
                 }
             })
-            Promise.all(ary).then(() => {
+
+            Promise.all(syncFuns).then(() => {
                 let initialState=store.state;
                 resolve({app,initialState})
             }).catch((err)=>{

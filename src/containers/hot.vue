@@ -15,16 +15,8 @@
                     </ul>
                 </div>
             </div>
-            {{hot.list}}
             <ul class="hot-list">
-                <hotitem></hotitem>
-                <hotitem></hotitem>
-                <hotitem></hotitem>
-                <hotitem></hotitem>
-                <hotitem></hotitem>
-                <hotitem></hotitem>
-                <hotitem></hotitem>
-                <hotitem></hotitem>
+                <hotitem v-for="(item,index) in hot.list" :key="index" :item="item"></hotitem>
             </ul>
         </div>
     </div>
@@ -44,11 +36,10 @@
             })
         },
         asyncData(store){
-            console.log("store>>>>");
             store.dispatch('fetchHotList')
         },
         mounted(){
-//            this.fetchHotList();
+            this.fetchHotList();
         },
         props:['title','type'],
         components:{

@@ -11,9 +11,12 @@ const state={
    hot:{
        list:[],
        fetching:true
-   }
-
-
+   },
+    //限时免费
+    limitFree:{
+        list:[],
+        fetching:true
+    }
 
 }
 
@@ -23,12 +26,12 @@ const mutations={
     //     state.list=payload;
     // },
     [types.FETCH_HOT_LIST](state,payload){
-        // state= Object.assign({},state.hot,{
-        //     list:payload,
-        //     fetching:false
-        // })
         state.hot.list=payload;
         state.hot.fetching=false;
+    },
+    [types.FETCH_LIMIT_FREE](state,payload){
+        state.limitFree.list=payload;
+        state.limitFree.fetching=false;
     }
 }
 
