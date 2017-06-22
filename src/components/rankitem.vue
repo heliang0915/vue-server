@@ -2,6 +2,7 @@
 <template>
     <div class="rank-item">
         <h3>{{config.title}}</h3>
+        <p>{{config}}</p>
         <ul>
             <li class="first">
                 <em>1</em>
