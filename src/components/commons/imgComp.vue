@@ -6,7 +6,7 @@
     </div>
 </template>
 <script>
-  import '../assets/css/imgComp'
+  import '../../assets/css/imgComp'
   export default{
       props:{
           link:{

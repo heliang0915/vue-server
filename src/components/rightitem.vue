@@ -16,7 +16,7 @@
 </template>
 <script>
     import '../assets/css/rightitem';
-    import imgComp from '../components/imgComp';
+    import imgComp from './commons/imgComp';
     export default{
         data(){
           return{

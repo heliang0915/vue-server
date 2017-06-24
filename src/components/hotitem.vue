@@ -6,7 +6,7 @@
     </li>
 </template>
 <script>
-    import imgComp from '../components/imgComp';
+    import imgComp from './commons/imgComp';
     export default {
         props:['item'],
         components:{
