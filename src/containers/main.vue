@@ -13,8 +13,8 @@
     </section>
 </template>
 <script>
-    import headerComp  from '../components/commons/header.vue';
-    import footerComp  from '../components/commons/footer.vue';
+    import headerComp  from '../components/layout/header.vue';
+    import footerComp  from '../components/layout/footer.vue';
     export default{
         components:{
             'header-comp':headerComp,

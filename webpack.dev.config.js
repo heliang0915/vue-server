@@ -92,6 +92,16 @@ let clientConfig = {
         filename:"libs.js?[hash]",
         minChunks:Infinity
       }),
+      //压缩时去掉警告
+      new webpack.optimize.UglifyJsPlugin({
+          compress: {
+              warnings: false
+          },
+          output: {
+              // remove all comments(注释)
+              comments: false
+          }
+      }),
       new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({

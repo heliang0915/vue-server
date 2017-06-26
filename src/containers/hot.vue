@@ -1,7 +1,6 @@
 <template>
     <div class="container" :class="type==2?'recommend':'hot'">
         <div class="container-inner">
-
             <div :class="(type==2)?'recommend-title':''">
                 <h3 class="channelName">{{title}}</h3>
                 <div class="classify-list" v-if="type==2">
@@ -22,7 +21,7 @@
     </div>
 </template>
 <script>
-    import '../assets/css/hot';
+//    import '../assets/css/hot';
     import hotitem from '../components/hotitem';
     import fetch  from '../util/fetch';
     import {mapActions,mapGetters} from 'vuex';
