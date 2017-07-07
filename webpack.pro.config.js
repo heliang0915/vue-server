@@ -19,19 +19,18 @@ console.log("生产环境配置......");
 
 var clientConfig={
   entry: {
-    // app: APP_PATH,
     app:path.resolve(__dirname,'src/entry-client.js'),
     libs:['vue','vue-router','axios','vuex']
   },
   output: {
     path:BUILD_PATH+"/"+env,
-    publishPath: '/build/'+env,
+    publicPath: '/',
     filename: '[name].js?[hash]',
     chunkFilename: "[name].chunk.js"//给require.ensure用
   },
   resolve: {
-    extensions: ['', '.js', '.vue','.css'],
-    fallback: [path.join(__dirname, '../node_modules')],
+    extensions: [ '.js', '.vue','.css'],
+    // fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
@@ -43,47 +42,50 @@ var clientConfig={
     }
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
-        loader: 'vue'
+          use: 'vue-loader'
       },
       { test: /\.css$/, 
         //将分散的css合并
-        loader: ExtractTextPlugin.extract("style", "css")
+          use: ExtractTextPlugin.extract({
+              use: 'css-loader',
+              fallback: 'vue-style-loader'
+          })
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        use: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /\.json$/,
-        loader: 'json'
+          use: 'json'
       },
       {
         test: /\.html$/,
-        loader: 'vue-html'
+          use: 'vue-html'
       },
       {
         test: /\.(png|jpe?g|jpg|gif)(\?.*)?$/,
-        loader: 'url-loader?importLoaders=1&limit=1000&name=assets/images/[name][hash].[ext]'
+          use: 'url-loader?importLoaders=1&limit=1000&name=assets/images/[name][hash].[ext]'
       },
       {
         test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
-        loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[hash:7].[ext]'
+          use: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[hash:7].[ext]'
       },
       {
         test: /\.html$/,
-        loader: "html"
+          use: "html"
       }
     ]
   },
-  vue: {
-    loaders:{
-      css:ExtractTextPlugin.extract("css")
-    }
-  },
+  // vue: {
+  //   loaders:{
+  //     css:ExtractTextPlugin.extract("css")
+  //   }
+  // },
   //第三方库配置
   plugins:[
       // 标记当前为生产环境 
@@ -115,8 +117,7 @@ var clientConfig={
           template: path.join(__dirname, '/template/index.ejs'),
           filename:templateName+'.html',
           title:"生产环境"
-      }),
-      new webpack.NoErrorsPlugin()
+      })
   ]
 }
 
@@ -145,31 +146,31 @@ let serverConfig = {
         __dirname: true
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel'
+            use: 'babel-loader'
         },{
             test: /\.vue$/,
-            loader: 'vue'
+            use: 'vue-loader'
         }, {
             test: /\.css/,
-            loaders: [
+            use: [
                 'css/locals',
             ]
         },{
             test: /\.(png|jpe?g|gif)(\?.*)?$/,
-            loader: 'url-loader?limit=1&name=assets/images/[name].[ext]?[hash]'
+            use: 'url-loader?limit=1&name=assets/images/[name].[ext]?[hash]'
         }, {
             test: /\.json$/,
-            loader: 'json'
+            use: 'json'
         }]
     },
     externals: getExternals(),
-    resolve: {extensions: ['', '.js', '.json', '.css','.vue']},
+    resolve: {extensions: ['.js', '.json', '.css','.vue']},
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.DedupePlugin(),
+        // new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {warnings: false},
             comments: false

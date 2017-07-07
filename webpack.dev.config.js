@@ -23,13 +23,13 @@ let clientConfig = {
   },
   output: {
     path:BUILD_PATH+"/"+env,
-    publishPath: '/build/'+env,
+    publicPath: '/',
     filename: '[name].js?[hash]',
     chunkFilename: "[name].chunk.js"//给require.ensure用
   },
   resolve: {
-    extensions: ['', '.js', '.vue','.css'],
-    fallback: [path.join(__dirname, '../node_modules')],
+    extensions: ['.js', '.vue','.css'],
+    // fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
@@ -41,44 +41,43 @@ let clientConfig = {
     }
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
-        loader: 'vue'
+        use: 'vue-loader'
       },
       { test: /\.css$/, 
-        //将分散的css合并
-        loader: ExtractTextPlugin.extract("style", "css")
+        use:  ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+          use: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /\.json$/,
-        loader: 'json'
+          use: 'json'
       },
       {
         test: /\.html$/,
-        loader: 'vue-html'
+          use: 'vue-html'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader?limit=1&name=[path][name].[ext]'
+          use: 'url-loader?limit=1&name=[path][name].[ext]'
       },
       {
         test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
-        loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[hash:7].[ext]'
+          use: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[hash:7].[ext]'
       }
     ],
   },
-  vue: {
-    loaders:{
-      css:ExtractTextPlugin.extract("css")
-    }
-  },
-  devtool:"#source-map",
+  // vue: {
+  //   loaders:{
+  //     css:ExtractTextPlugin.extract("css")
+  //   }
+  // },
+  // devtool:"source-map",
   //第三方库配置
   plugins:[
       // new webpack.DllReferencePlugin({
@@ -92,7 +91,7 @@ let clientConfig = {
         minChunks:Infinity
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
-      new webpack.optimize.DedupePlugin(),
+      // new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
           compress: {warnings: false},
           comments: false
@@ -138,35 +137,27 @@ let serverConfig = {
         __dirname: true
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel'
+            use: 'babel-loader'
         },{
             test: /\.vue$/,
-            loader: 'vue'
+            use: 'vue-loader'
         }, {
             test: /\.css/,
-            loaders: [
-                'css/locals',
-            ]
+            use: ['vue-style-loader', 'css-loader']
         },{
             test: /\.(png|jpe?g|gif)(\?.*)?$/,
-            loader: 'url-loader?limit=1&name=assets/images/[name].[ext]?[hash]'
+            use: 'url-loader?limit=1&name=assets/images/[name].[ext]?[hash]'
         }, {
             test: /\.json$/,
-            loader: 'json'
+            use: 'json'
         }]
     },
     externals: getExternals(),
-    resolve: {extensions: ['', '.js', '.json', '.css','.vue']},
+    resolve: {extensions: ['.js', '.json', '.css','.vue']},
     plugins: [
-        // new webpack.optimize.OccurrenceOrderPlugin(),
-        // new webpack.optimize.DedupePlugin(),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {warnings: false},
-        //     comments: false
-        // }),
         new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(env)})
     ]
 }
