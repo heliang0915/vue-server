@@ -7,11 +7,14 @@ var ExtractTextPlugin=require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 let OpenBrowserWebpackPlugin=require("open-browser-webpack-plugin");
 var CommonsChunkPlugin=webpack.optimize.CommonsChunkPlugin;
+const nodeExternals = require('webpack-node-externals')
+const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
+
 
 //定义公共路径
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH=path.resolve(ROOT_PATH,'src/app.js');
-var BUILD_PATH=path.resolve(ROOT_PATH,'build');
+var BUILD_PATH=path.resolve(ROOT_PATH,'dist');
 let {env,templateName}=require("./server/config");
 console.log("env>>"+env);
 console.log('开发环境配置...')
@@ -23,13 +26,14 @@ let clientConfig = {
   },
   output: {
     path:BUILD_PATH+"/"+env,
-    publishPath: '/build/'+env,
-    filename: '[name].js?[hash]',
-    chunkFilename: "[name].chunk.js"//给require.ensure用
+    publicPath: '/',
+    filename: '[name].js?[hash]'
+    //   ,
+    // chunkFilename: "[name].chunk.js"//给require.ensure用
   },
   resolve: {
-    extensions: ['', '.js', '.vue','.css'],
-    fallback: [path.join(__dirname, '../node_modules')],
+    extensions: ['.js', '.vue','.css'],
+    // fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
@@ -41,50 +45,41 @@ let clientConfig = {
     }
   },
   module: {
-    loaders: [
-      {
-        test: /\.vue$/,
-        loader: 'vue'
-      },
-      { test: /\.css$/, 
+    rules: [
+        {
+            test: /\.vue$/,
+            loader: 'vue-loader',
+            
+        },
+      { test: /\.css$/,
         //将分散的css合并
-        loader: ExtractTextPlugin.extract("style", "css")
+          use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        use: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /\.json$/,
-        loader: 'json'
+        use: 'json'
       },
       {
         test: /\.html$/,
-        loader: 'vue-html'
+        use: 'vue-html'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader?limit=1&name=[path][name].[ext]'
+        use: 'url-loader?limit=1&name=[path][name].[ext]'
       },
       {
         test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
-        loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[hash:7].[ext]'
+        use: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[hash:7].[ext]'
       }
-    ],
+    ]
   },
-  vue: {
-    loaders:{
-      css:ExtractTextPlugin.extract("css")
-    }
-  },
-  devtool:"#source-map",
   //第三方库配置
   plugins:[
-      // new webpack.DllReferencePlugin({
-      //     context: __dirname,
-      //     manifest: require('./build/vendor-manifest.json')
-      // }),
       //合并第三方代码
       new CommonsChunkPlugin({
         name:"libs",
@@ -92,7 +87,6 @@ let clientConfig = {
         minChunks:Infinity
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
-      new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
           compress: {warnings: false},
           comments: false
@@ -109,9 +103,9 @@ let clientConfig = {
       new OpenBrowserWebpackPlugin({
             url:"http://"+helper.getLocalIp()+":4000"
       })
+       
   ]
 }
-
 
 function getExternals() {
     return fs.readdirSync(path.resolve(__dirname, './node_modules'))
@@ -123,13 +117,75 @@ function getExternals() {
         }, {})
 }
 
+
+let  entryServerConfig={
+    devtool: '#cheap-module-source-map',
+    output: {
+        path:BUILD_PATH,
+        publicPath: '/',
+        filename: '[name].[chunkhash].js'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    extractCSS:false,
+                    preserveWhitespace: false,
+                    postcss: [
+                        require('autoprefixer')({
+                            browsers: ['last 3 versions']
+                        })
+                    ]
+                }
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: '[name].[ext]?[hash]'
+                }
+            },
+            {
+                test: /\.css$/,
+                use: ['vue-style-loader', 'css-loader']
+            }
+        ]
+    },
+    target: 'node',
+    entry:'./src/entry-server.js',
+    output:{
+        filename: 'server-bundle.js',
+        libraryTarget: 'commonjs2',
+        path:BUILD_PATH
+    },
+    externals: nodeExternals({
+        // do not externalize CSS files in case we need to import it from a dep
+        whitelist: /\.css$/
+    }),
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+            'process.env.VUE_ENV': '"server"'
+        }),
+        new VueSSRServerPlugin()
+    ]
+}   
+
 //
 let serverConfig = {
     entry: {
         app:path.resolve(__dirname,'server/app.js')
     },
     output: {
-        path: path.resolve(__dirname, 'build/dev_server'),
+        path: path.resolve(__dirname, 'dist/dev_server'),
         filename: '[name].js'
     },
     target: 'node',
@@ -138,37 +194,37 @@ let serverConfig = {
         __dirname: true
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel'
-        },{
-            test: /\.vue$/,
-            loader: 'vue'
-        }, {
-            test: /\.css/,
-            loaders: [
-                'css/locals',
-            ]
-        },{
+            use: 'babel-loader'
+        },
+            // ,
+        //     {
+        //     test: /\.vue$/,
+        //     use: 'vue-loader'
+        // }, 
+        //     {
+        //     test: /\.css/,
+        //     rules: [
+        //         'css/locals',
+        //     ]
+        // }
+        //    
+        //     ,
+            {
             test: /\.(png|jpe?g|gif)(\?.*)?$/,
-            loader: 'url-loader?limit=1&name=assets/images/[name].[ext]?[hash]'
+            use: 'url-loader?limit=1&name=assets/images/[name].[ext]?[hash]'
         }, {
             test: /\.json$/,
-            loader: 'json'
+            use: 'json'
         }]
     },
     externals: getExternals(),
-    resolve: {extensions: ['', '.js', '.json', '.css','.vue']},
+    resolve: {extensions: ['.js', '.json', '.css','.vue']},
     plugins: [
-        // new webpack.optimize.OccurrenceOrderPlugin(),
-        // new webpack.optimize.DedupePlugin(),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {warnings: false},
-        //     comments: false
-        // }),
         new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(env)})
     ]
 }
 
-module.exports=[clientConfig,serverConfig]
+module.exports=[clientConfig,entryServerConfig,serverConfig]

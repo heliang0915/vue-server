@@ -1,10 +1,14 @@
 <template>
     <section>
-        index1
-        {{data.list}}
+        <p>{{data.list}}</p>
         <button @click="fetchIndexList">点击</button>
     </section>
 </template>
+<style>
+    body{
+        background: red;
+    }
+</style>
 <script>
     import {mapActions,mapGetters} from 'vuex';
     export default{

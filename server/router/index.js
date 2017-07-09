@@ -1,35 +1,25 @@
 import express  from 'express';
-import createApp from '../../src/entry-server';
-const renderer = require('vue-server-renderer').createRenderer();
-import helper from '../helper';
-import {templateName} from '../config';
+import fs  from 'fs';
+import path  from 'path';
+import store from '../../src/store';
+// import helper from '../helper';
+// import {templateName,env} from '../config';
+const {createBundleRenderer} = require('vue-server-renderer');
+const resolve = file => path.resolve(__dirname, file)
 let router=express.Router();
-router.route("*").all((req,res,next)=>{
-    let context={
-        url:req.originalUrl
-    }
-    createApp(context).then(({app,initialState})=>{
-        renderer.renderToString(app,(err,html)=>{
-            if (err) {
-                if (err.code === 404) {
-                    res.status(404).end('Page not found')
-                } else {
-                    res.status(500).end('Internal Server Error')
-                }
-            } else {
-                helper.getHTMLFormTemplate(templateName,{
-                        body:html,
-                        initialState:JSON.stringify(initialState)
-                    },(err,page)=>{
-                        res.send(page);
-                    })
-            }
-        })
-    }).catch((err)=>{
-        next();
-    })
 
-})
+const template = fs.readFileSync(path.join(__dirname,'../../template/template.html'),'utf-8');
+const serverBundle = require('../../dist/vue-ssr-server-bundle.json');
+const clientManifest = require('../../dist/vue-ssr-client-manifest.json');
+
+let renderer=createBundleRenderer(serverBundle,{
+    template,
+    clientManifest,
+    basedir: resolve('../../dist'),
+    runInNewContext: false
+});
+
+
 router.route('/data').all((req,res)=> {
     let data = [{
         "guid": "258944",
@@ -157,7 +147,30 @@ router.route('/data').all((req,res)=> {
 
 router.route('/uploadFile').all((req,res)=>{
     let json={pic:'//img13.360buyimg.com/n1/g13/M04/11/0C/rBEhUlLTSwkIAAAAAAGhELKHr2sAAH3BwEuo-wAAaEo805.jpg'}
-   res.send(json)
+    res.send(json)
 })
+
+
+router.route("*").all((req,res,next)=>{
+    let context={
+        title: 'Vue HN 2.0', // default title,
+        url:req.originalUrl,
+        initialState:JSON.stringify(store.state)
+    }
+
+
+    renderer.renderToString(context, (err, html) => {
+        if (err) {
+            if (err.code === 404) {
+                res.status(404).end('Page not found')
+            } else {
+                res.status(500).end('Internal Server Error'+err)
+            }
+        } else {
+            res.end(html);
+        }
+    })
+})
+
 
 export default router;

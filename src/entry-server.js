@@ -6,13 +6,9 @@ import{createApp}from './app';
 export default  context=>{
    return new Promise((resolve, reject) => {
         const { app, router,store } = createApp()
-        // set server-side router's location
         router.push(context.url)
-        let initialState=store.state;
-        // wait until router has resolved possible async components and hooks
         router.onReady(() => {
             let matchedComponents = router.getMatchedComponents()
-            // no matched routes, reject with 404
             if (!matchedComponents.length) {
                 reject({ code: 404 })
             }
@@ -22,7 +18,8 @@ export default  context=>{
                 }
             })
             Promise.all(ary).then(() => {
-                resolve({app,initialState:store.state})
+                context.state = store.state;
+                resolve(app)
             }).catch((err)=>{
                 reject(err);
                 console.log(err);

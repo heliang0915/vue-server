@@ -6,13 +6,14 @@ import  bodyParser from 'body-parser';
 import {env,cacheTime} from './config';
 import api from './router/api';
 import index from './router/index';
-import history from 'connect-history-api-fallback';
 
 let App=express();
 App.use(debug('dev'));
 App.use(cookieParser());
 App.use(bodyParser.json());
 App.use(bodyParser.urlencoded({extended:false}));
+App.use('/dist',express.static(path.join(__dirname,'/../dist/')));
+
 App.use((req,res,next)=>{
     let date=new Date();
     date.setTime(date.getTime()+cacheTime);
@@ -22,6 +23,7 @@ App.use((req,res,next)=>{
     res.header("Expires",date.toUTCString());
     next();
 })
+
 
 App.use("/api/",api)
 App.use("/",index);

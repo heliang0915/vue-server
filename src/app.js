@@ -16,7 +16,6 @@ export function createApp() {
     // initFetch();
     let router = createRouter();
     let app = new Vue({
-        // el: '#app',
         router,
         store,
         render: h => h(App)
