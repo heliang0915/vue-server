@@ -3,7 +3,7 @@
  */
 import * as types from './mutaion-types';
 import fetch from '../util/fetch';
-import {conf} from '../../server/config';
+import {conf} from '../../config';
 let {port}=conf;
 port=4000;
 

@@ -11,7 +11,12 @@
 </style>
 <script>
     import {mapActions,mapGetters} from 'vuex';
+    import titleMixin from '../../mixin/title-mixin';
     export default{
+        mixins: [titleMixin],
+        title(){
+            return "哈哈";
+        },
         computed:{
             ...mapGetters({
                 data:'getIndexList'

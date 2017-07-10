@@ -3,7 +3,7 @@ import  path from 'path';
 import debug from 'morgan';
 import  cookieParser from 'cookie-parser';
 import  bodyParser from 'body-parser';
-import {env,cacheTime} from './config';
+import {env,cacheTime} from '../config';
 import api from './router/api';
 import index from './router/index';
 

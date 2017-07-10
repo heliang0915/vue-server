@@ -14,11 +14,10 @@ var BUILD_PATH=path.resolve(ROOT_PATH,'../dist');
 
 let env=process.env.NODE_ENV||"development";
 let isProd=(env!="development");
-console.log(isProd);
+
+
 module.exports = {
-    devtool: isProd
-        ? false
-        : '#source-map',
+    devtool: isProd? false : '#source-map',
     output: {
         path: BUILD_PATH,
         publicPath: '/dist/',

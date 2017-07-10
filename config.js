@@ -1,4 +1,5 @@
 let env=process.env.NODE_ENV||"development";
+let vueEnv=process.env.VUE_ENV||"client";
 let cacheTime=24*60*60*60*1000;
 //全局模板文件
 let templateName="template";
@@ -15,6 +16,9 @@ let config={
 };
 
 let conf= config[env];
+let isServer=vueEnv=="server";
 let isProd=(env!="development");
-
-export {conf,env,isProd,cacheTime,templateName};
+module.exports={
+    conf,env,isProd,isServer,cacheTime,templateName
+}
+// export {conf,env,isProd,isServer,cacheTime,templateName};

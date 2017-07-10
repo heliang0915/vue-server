@@ -3,7 +3,7 @@
  */
 import  fs from 'fs';
 import  path from 'path';
-import {env} from './config';
+import {env} from '../config';
 let reg=/{{(\w+)}}/g;
 let helper={
     getHTMLFormTemplate(templateName,data,cb){

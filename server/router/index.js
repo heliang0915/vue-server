@@ -1,13 +1,10 @@
 import express  from 'express';
 import fs  from 'fs';
 import path  from 'path';
-import store from '../../src/store';
-// import helper from '../helper';
-// import {templateName,env} from '../config';
+import  seoMap from '../../seo/seoMap';
 const {createBundleRenderer} = require('vue-server-renderer');
 const resolve = file => path.resolve(__dirname, file)
 let router=express.Router();
-
 const template = fs.readFileSync(path.join(__dirname,'../../template/template.html'),'utf-8');
 const serverBundle = require('../../dist/vue-ssr-server-bundle.json');
 const clientManifest = require('../../dist/vue-ssr-client-manifest.json');
@@ -18,8 +15,26 @@ let renderer=createBundleRenderer(serverBundle,{
     basedir: resolve('../../dist'),
     runInNewContext: false
 });
-
-
+//合并上下文
+let mergeContext=(context,path)=>{
+    let seoItem=seoMap[path];
+    if(seoItem){
+        let {seo}=seoItem;
+        if(seo){
+            Object.keys(seo).forEach((key)=>{
+                context[key]=seo[key];
+            })
+        }
+    }
+    return context;
+}
+let errHandler=(err,res)=>{
+    if (err.code === 404) {
+        res.status(404).end('Page not found')
+    } else {
+        res.status(500).end('Internal Server Error'+err)
+    }
+}
 router.route('/data').all((req,res)=> {
     let data = [{
         "guid": "258944",
@@ -144,33 +159,22 @@ router.route('/data').all((req,res)=> {
     }]
     res.send(data)
 });
-
 router.route('/uploadFile').all((req,res)=>{
     let json={pic:'//img13.360buyimg.com/n1/g13/M04/11/0C/rBEhUlLTSwkIAAAAAAGhELKHr2sAAH3BwEuo-wAAaEo805.jpg'}
     res.send(json)
 })
-
-
 router.route("*").all((req,res,next)=>{
     let context={
-        title: 'Vue HN 2.0', // default title,
-        url:req.originalUrl,
-        initialState:JSON.stringify(store.state)
+        title: '默认标题', // default title,
+        url:req.originalUrl
     }
-
-
+    context=mergeContext(context,req.originalUrl);
     renderer.renderToString(context, (err, html) => {
         if (err) {
-            if (err.code === 404) {
-                res.status(404).end('Page not found')
-            } else {
-                res.status(500).end('Internal Server Error'+err)
-            }
+            errHandler(err,res);
         } else {
             res.end(html);
         }
     })
 })
-
-
 export default router;

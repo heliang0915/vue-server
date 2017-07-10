@@ -1,11 +1,11 @@
 /**
- * Created by heliang on 17-7-8.
+ * 服务端配置 用于生成 客户端bundle.json文件
  */
 require('babel-register');
 var webpack=require("webpack");
 const base = require('./webpack.base.config');
 const merge = require('webpack-merge');
-let {templateName,evn,isProd}=require("../server/config");
+let {templateName,evn,isProd}=require("../config");
 const path = require('path');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const config = merge(base, {

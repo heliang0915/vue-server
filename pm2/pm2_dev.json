@@ -9,14 +9,14 @@
   "out_file"         : "pm2/logs/access.log",
   "pid_file"         : "pm2/pids/react-server.pid",
   "instances"        : 6,
-  "max_memory_restart": "100M", // 1 megabytes, e.g.: "2G", "10M", "100K", 1024 the default unit is byte.
+  "max_memory_restart": "100M",
   "watch"            : false,
   "ignore_watch"      : ["[\\/\\\\]\\./", "node_modules"],
   "merge_logs"       : true,
   "exec_interpreter" : "node",
   "exec_mode"        : "cluster",
-  "autorestart"      : false, // enable/disable automatic restart when an app crashes or exits
-  "vizion"           : false, // enable/disable vizion features (versioning control)
+  "autorestart"      : false,
+  "vizion"           : false,
   "env": {
     "NODE_ENV": "development"
   }

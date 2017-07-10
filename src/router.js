@@ -3,21 +3,21 @@
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { indexComponent,aboutComponent} from './routes/asyncRoutes';
-
+import  seoMap from '../seo/seoMap';
 Vue.use(VueRouter);
-
 export function createRouter() {
     return new VueRouter(getConfig());
 }
+let routes=[];
+Object.keys(seoMap).map((path)=>{
+    let {component}=seoMap[path];
+    routes.push({path,component});
+})
 
 let getConfig = () => {
     let config = {};
     config.mode = "history";
-    config.routes = [
-        {path: '/', component: indexComponent},
-        {path: '/about', component: aboutComponent}
-    ]
+    config.routes = routes
     return config;
 };
 
