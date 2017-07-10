@@ -6,17 +6,19 @@
 </template>
 <style>
     body{
-        background: red;
+        background: #FFF;
     }
 </style>
 <script>
+
+    console.log(`This is a Template`);
     import {mapActions,mapGetters} from 'vuex';
-    import titleMixin from '../../mixin/title-mixin';
+//    import titleMixin from '../../mixin/title-mixin';
     export default{
-        mixins: [titleMixin],
-        title(){
-            return "哈哈";
-        },
+//        mixins: [titleMixin],
+//        title(){
+//            return "哈哈";
+//        },
         computed:{
             ...mapGetters({
                 data:'getIndexList'

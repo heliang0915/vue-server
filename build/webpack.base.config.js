@@ -50,11 +50,11 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                use: 'url-loader?limit=1&name=[path][name].[ext]'
+                loader: 'url-loader?limit=1&name=[path][name].[ext]'
             },
             {
                 test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
-                use: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[hash:7].[ext]'
+                loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[hash:7].[ext]'
             },
             {
                 test: /\.css$/,

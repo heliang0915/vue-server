@@ -1,11 +1,17 @@
 /**
  * 服务端配置 用于生成 客户端bundle.json文件
  */
+
+
+
+
+
 require('babel-register');
 var webpack=require("webpack");
 const base = require('./webpack.base.config');
 const merge = require('webpack-merge');
 let {templateName,evn,isProd}=require("../config");
+console.log("isProd>>"+isProd);
 const path = require('path');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const config = merge(base, {
@@ -20,7 +26,7 @@ const config = merge(base, {
             'process.env.VUE_ENV': '"client"'
         }),
         // 热加载
-        isProd? {}:new webpack.HotModuleReplacementPlugin(),
+        isProd? function(){}:new webpack.HotModuleReplacementPlugin(),
          new webpack.optimize.CommonsChunkPlugin({
             name:"libs",
             filename:"libs.js?[hash]",

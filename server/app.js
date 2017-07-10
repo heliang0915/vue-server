@@ -4,11 +4,11 @@
  *@date 2017-05-26
  */
 let env=process.env.NODE_ENV||"development";
-// require('babel-register');
-if(env=="development"){
-    console.log("babel-register 导入...")
-    require('babel-register');
-}
+require('babel-register');
+// if(env=="development"){
+//     console.log("babel-register 导入...")
+//     require('babel-register');
+// }
 
 let app =require("./server").default;
 let {conf:config} =require("../config");

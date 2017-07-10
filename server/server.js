@@ -5,9 +5,13 @@ import  cookieParser from 'cookie-parser';
 import  bodyParser from 'body-parser';
 import {env,cacheTime} from '../config';
 import api from './router/api';
-import index from './router/index';
-
+import {useLog} from './logs/logs';
+import index from './router/';
 let App=express();
+
+//日志配置
+useLog(App);
+
 App.use(debug('dev'));
 App.use(cookieParser());
 App.use(bodyParser.json());

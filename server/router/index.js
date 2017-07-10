@@ -8,6 +8,7 @@ let router=express.Router();
 const template = fs.readFileSync(path.join(__dirname,'../../template/template.html'),'utf-8');
 const serverBundle = require('../../dist/vue-ssr-server-bundle.json');
 const clientManifest = require('../../dist/vue-ssr-client-manifest.json');
+import {fileLog} from '../logs/logs';
 
 let renderer=createBundleRenderer(serverBundle,{
     template,
@@ -168,10 +169,12 @@ router.route("*").all((req,res,next)=>{
         title: '默认标题', // default title,
         url:req.originalUrl
     }
+
     context=mergeContext(context,req.originalUrl);
     renderer.renderToString(context, (err, html) => {
         if (err) {
             errHandler(err,res);
+            fileLog.error(err.stack);
         } else {
             res.end(html);
         }

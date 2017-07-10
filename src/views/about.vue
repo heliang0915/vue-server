@@ -17,7 +17,7 @@
         display: block;
         font-family: 'iconfont';
         content: "\e742";
-        font-size:100px;
+        font-size:10px;
     }
 </style>
 <script>
