@@ -28,7 +28,7 @@ module.exports = {
         extensions: ['.js', '.vue','.css'],
         alias: {
             'src': path.resolve(__dirname, '../src'),
-            'assets': path.resolve(__dirname, '../src/assets'),
+            'assets': path.resolve(__dirname, '../assets'),
             'components': path.resolve(__dirname, '../src/components'),
             'vue':path.resolve(__dirname,'../node_modules/vue/dist/vue.js'),
             'vue-router':path.resolve(__dirname,'../node_modules/vue-router/dist/vue-router.js'),
@@ -78,7 +78,7 @@ module.exports = {
             compress: { warnings: false }
         }),
         new ExtractTextPlugin({
-            filename: '[name].[chunkhash].css'
+            filename: 'common.[chunkhash].css'
         })
     ]
         : [

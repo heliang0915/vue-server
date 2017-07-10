@@ -1,5 +1,13 @@
 <template>
-    <section id="app">
+    <div id="app">
         <router-view></router-view>
-    </section>
+    </div>
 </template>
+<script>
+    import '../assets/css/index';
+</script>
+<style>
+    body{
+        background: blue;
+    }
+</style>

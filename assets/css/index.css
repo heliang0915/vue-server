@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 326957 */
+    src: url('../fonts/iconfont.eot');
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/iconfont.woff') format('woff'),
+    url('../fonts/iconfont.ttf') format('truetype'),
+    url('../fonts/iconfont.svg#iconfont') format('svg');
+}
+
+body{
+    font-size:100px;
+    font-family: 'iconfont';
+}

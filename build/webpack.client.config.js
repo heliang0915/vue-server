@@ -5,13 +5,13 @@ require('babel-register');
 var webpack=require("webpack");
 const base = require('./webpack.base.config');
 const merge = require('webpack-merge');
-let {templateName}=require("../server/config");
+let {templateName,evn,isProd}=require("../server/config");
 const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const config = merge(base, {
     entry: {
-        app: './src/entry-client.js'
+        app: './src/entry-client.js',
+        libs:['vue','vue-router','axios','vuex']
     },
     plugins: [
         // strip dev-only code in Vue source
@@ -19,28 +19,12 @@ const config = merge(base, {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
             'process.env.VUE_ENV': '"client"'
         }),
-        // extract vendor chunks for better caching
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: function (module) {
-                // a module is extracted into the vendor chunk if...
-                return (
-                    // it's inside node_modules
-                    /node_modules/.test(module.context) &&
-                    // and not a CSS file (due to extract-text-webpack-plugin limitation)
-                    !/\.css$/.test(module.request)
-                )
-            }
-        }),
-        // new HtmlWebpackPlugin({
-        //     template: path.join(__dirname, '/../template/index.ejs'),
-        //     filename:templateName+'.html',
-        //     title:"开发环境"
-        // }),
-        // extract webpack runtime & manifest to avoid vendor chunk hash changing
-        // on every build.
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest'
+        // 热加载
+        isProd? {}:new webpack.HotModuleReplacementPlugin(),
+         new webpack.optimize.CommonsChunkPlugin({
+            name:"libs",
+            filename:"libs.js?[hash]",
+            minChunks:Infinity
         }),
         new VueSSRClientPlugin()
     ]

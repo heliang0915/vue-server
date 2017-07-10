@@ -15,4 +15,6 @@ let config={
 };
 
 let conf= config[env];
-export {conf,env,cacheTime,templateName};
+let isProd=(env!="development");
+
+export {conf,env,isProd,cacheTime,templateName};
