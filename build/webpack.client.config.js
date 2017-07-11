@@ -1,11 +1,6 @@
 /**
  * 服务端配置 用于生成 客户端bundle.json文件
  */
-
-
-
-
-
 require('babel-register');
 var webpack=require("webpack");
 const base = require('./webpack.base.config');

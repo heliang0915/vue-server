@@ -11,7 +11,6 @@
 </style>
 <script>
 
-    console.log(`This is a Template`);
     import {mapActions,mapGetters} from 'vuex';
 //    import titleMixin from '../../mixin/title-mixin';
     export default{

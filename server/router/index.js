@@ -5,7 +5,7 @@ import  seoMap from '../../seo/seoMap';
 const {createBundleRenderer} = require('vue-server-renderer');
 const resolve = file => path.resolve(__dirname, file)
 let router=express.Router();
-const template = fs.readFileSync(path.join(__dirname,'../../template/template.html'),'utf-8');
+const template = fs.readFileSync(path.join(__dirname,'../template/template.html'),'utf-8');
 const serverBundle = require('../../dist/vue-ssr-server-bundle.json');
 const clientManifest = require('../../dist/vue-ssr-client-manifest.json');
 import {fileLog} from '../logs/logs';

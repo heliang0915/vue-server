@@ -25,6 +25,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.vue','.css'],
+        modules: [path.resolve(__dirname, '../node_modules')],
         alias: {
             'src': path.resolve(__dirname, '../src'),
             'assets': path.resolve(__dirname, '../assets'),
@@ -45,7 +46,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
+                loader: 'babel-loader?cacheDirectory', //启用babel缓存
                 exclude: /node_modules/
             },
             {

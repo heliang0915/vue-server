@@ -3,7 +3,7 @@
  *@author heliang
  *@date 2017-05-26
  */
-let env=process.env.NODE_ENV||"development";
+// let env=process.env.NODE_ENV||"development";
 require('babel-register');
 // if(env=="development"){
 //     console.log("babel-register 导入...")
