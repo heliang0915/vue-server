@@ -1,9 +1,9 @@
 /**
- * Created by lenovo on 2017/6/11.
+ *
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import  seoMap from '../seo/seoMap';
+import  seoMap from './seo/seoMap';
 Vue.use(VueRouter);
 export function createRouter() {
     return new VueRouter(getConfig());

@@ -1,8 +1,962 @@
 <template>
-    <section>
-        <p>{{data.list}}</p>
-        <button @click="fetchIndexList">点击</button>
-    </section>
+    <!--<section>-->
+        <!--<p>{{data.list}}</p>-->
+        <!--<button @click="fetchIndexList">点击</button>-->
+    <!--</section>-->
+    <WebContainer>
+        <div class="main-inner">
+            <!--banner图-->
+            <div class="banner">
+                <div class="banner-inner">
+                    <div class="banner-pic">
+                        <a href="/pc/pages/story_detail.html">
+                            <img src="../../assets//images/banner1.jpg">
+                        </a>
+                    </div>
+                    <ul class="banner-title-list">
+                        <li class="active">
+                            <a href="#">甜宠军婚：重生农家辣媳</a>
+                        </li>
+                        <li>
+                            <a href="#">甜宠军婚：重生农家辣媳</a>
+                        </li>
+                        <li>
+                            <a href="#">甜宠军婚：重生农家辣媳</a>
+                        </li>
+                        <li>
+                            <a href="#">甜宠军婚：重生农家辣媳</a>
+                        </li>
+                        <li>
+                            <a href="#">甜宠军婚：重生农家辣媳</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--热门小说-->
+            <div class="container hot">
+                <div class="container-inner">
+                    <h3 class="channelName">热门小说</h3>
+                    <ul class="hot-list">
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--限时免费-->
+            <div class="limit-free">
+                <ul class="limit-free-list">
+                    <li>
+                        <div class="free-item-first">
+                            <h3>限时免费</h3>
+                            <p>VIP章节免费读</p>
+                            <div class="clock">
+                                <img src="https://qidian.gtimg.com/readnovel/images/index/icon-time_2x.0.1.png" alt="">
+                            </div>
+                            <em>2天19:02:39</em>
+                            <a href="">进入限免频道 &gt;</a>
+                        </div>
+                    </li>
+                    <li class="free-item">
+                        <div class="free-item-inner">
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p><a href="###">总裁来袭：豪门联姻</a></p>
+                            <p>
+                                <del>5阅币⁄千字</del>
+                            </p>
+                            <a class="btn" href="">
+                                立即阅读
+                            </a>
+                        </div>
+                    </li>
+                    <li class="free-item">
+                        <div class="free-item-inner">
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p><a href="###">总裁来袭：豪门联姻</a></p>
+                            <p>
+                                <del>5阅币⁄千字</del>
+                            </p>
+                            <a class="btn" href="">
+                                立即阅读
+                            </a>
+                        </div>
+                    </li>
+                    <li class="free-item">
+                        <div class="free-item-inner">
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p><a href="###">总裁来袭：豪门联姻</a></p>
+                            <p>
+                                <del>5阅币⁄千字</del>
+                            </p>
+                            <a class="btn" href="">
+                                立即阅读
+                            </a>
+                        </div>
+                    </li>
+                    <li class="free-item">
+                        <div class="free-item-inner">
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p><a href="###">总裁来袭：豪门联姻</a></p>
+                            <p>
+                                <del>5阅币⁄千字</del>
+                            </p>
+                            <a class="btn" href="">
+                                立即阅读
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--热销榜-->
+            <div class="container">
+                <div class="container-inner">
+                    <div class="ranks">
+                        <div class="rank-item">
+                            <h3>热销榜</h3>
+                            <ul>
+                                <li class="first">
+                                    <em>1</em>
+                                    <a href="#">首席的独宠新娘</a>
+                                </li>
+                                <li class="second">
+                                    <em>2</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li class="three">
+                                    <em>3</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>4</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>5</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>6</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>7</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>8</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>9</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>10</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="rank-item">
+                            <h3>点击榜</h3>
+                            <ul>
+                                <li class="first">
+                                    <em>1</em>
+                                    <a href="#">首席的独宠新娘</a>
+                                </li>
+                                <li class="second">
+                                    <em>2</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li class="three">
+                                    <em>3</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>4</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>5</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>6</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>7</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>8</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>9</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>10</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="rank-item">
+                            <h3>新书榜</h3>
+                            <ul>
+                                <li class="first">
+                                    <em>1</em>
+                                    <a href="#">首席的独宠新娘</a>
+                                </li>
+                                <li class="second">
+                                    <em>2</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li class="three">
+                                    <em>3</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>4</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>5</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>6</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>7</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>8</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>9</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>10</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="rank-item">
+                            <h3>完本榜</h3>
+                            <ul>
+                                <li class="first">
+                                    <em>1</em>
+                                    <a href="#">首席的独宠新娘</a>
+                                </li>
+                                <li class="second">
+                                    <em>2</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li class="three">
+                                    <em>3</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>4</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>5</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>6</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>7</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>8</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>9</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+                                <li>
+                                    <em>10</em>
+                                    <a href="#">绝色狂医：魔神大人，轻点撩</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="side-ad">
+                        <img src="//qidian.qpic.cn/qidian_common/349573/199bd90d7fc7e2225d0e13f7a33704bd/0" alt="">
+                    </div>
+                </div>
+            </div>
+            <!--新书抢先-->
+            <div class="container new-book">
+                <div class="container-inner">
+                    <h3 class="channelName">新书抢先</h3>
+                    <div class="content">
+                        <div class="side-left">
+                            <div class="side-left-inner">
+                                <ul class="imgs">
+                                    <li>
+                                        <a href="##">
+                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="../../assets//images/new2.jpeg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p>豪门闪婚宠妻有毒</p>
+                                <div class="desc">
+                                    <span class="reader">漂亮的海妖</span>
+                                    <div class="read-classify">
+                                        <em class="small-btn">古代言情</em>
+                                        <em class="small-btn btn-red">完结</em>
+                                        <em class="small-btn btn-blue">79.33万</em>
+                                    </div>
+                                    <p>一张神秘藏宝图，牵扯出一段盛世奇恋，一次意外偶遇，陆非夏绯闻缠身，他突然对她说：“和我结</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-right">
+
+                            <div class="side-item">
+                                <div class="side-item-inner">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <div class="side-item-inner odd">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <div class="side-item-inner">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <div class="side-item-inner odd">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--人气完本-->
+            <div class="container new-book">
+                <div class="container-inner">
+                    <h3 class="channelName">人气完本</h3>
+                    <div class="content">
+                        <div class="side-left">
+                            <div class="side-left-inner">
+                                <ul class="imgs">
+                                    <li>
+                                        <a href="##">
+                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="../../assets//images/new2.jpeg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p>豪门闪婚宠妻有毒</p>
+                                <div class="desc">
+                                    <span class="reader">漂亮的海妖</span>
+                                    <div class="read-classify">
+                                        <em class="small-btn">古代言情</em>
+                                        <em class="small-btn btn-red">完结</em>
+                                        <em class="small-btn btn-blue">79.33万</em>
+                                    </div>
+                                    <p>一张神秘藏宝图，牵扯出一段盛世奇恋，一次意外偶遇，陆非夏绯闻缠身，他突然对她说：“和我结</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-right">
+
+                            <div class="side-item">
+                                <div class="side-item-inner">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <div class="side-item-inner odd">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <div class="side-item-inner">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <div class="side-item-inner odd">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--分类推荐-->
+            <div class="container recommend">
+                <div class="container-inner">
+                    <div class="recommend-title clearfix">
+                        <h3 class="channelName">分类推荐</h3>
+                        <div class="classify-list">
+                            <ul>
+                                <li class="active">仙侠奇缘1</li>
+                                <li>仙侠奇缘1</li>
+                                <li>仙侠奇缘1</li>
+                                <li>仙侠奇缘1</li>
+                                <li>仙侠奇缘1</li>
+                                <li>仙侠奇缘1</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <ul class="hot-list">
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/re1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/re1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/re1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/re1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/re1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/re1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/re1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                        <li>
+                            <div class="div-img">
+                                <a href="#">
+                                    <img src="../../assets//images/re1.jpg" alt="图片">
+                                </a>
+                            </div>
+                            <p>农门辣女：山里汉子甜宠妻</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--编辑推荐-->
+            <div class="container new-book">
+                <div class="container-inner">
+                    <h3 class="channelName">编辑推荐</h3>
+                    <div class="content">
+                        <div class="side-left">
+                            <div class="side-left-inner">
+                                <ul class="imgs">
+                                    <li>
+                                        <a href="##">
+                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="../../assets//images/new2.jpeg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p>豪门闪婚宠妻有毒</p>
+                                <div class="desc">
+                                    <span class="reader">漂亮的海妖</span>
+                                    <div class="read-classify">
+                                        <em class="small-btn">古代言情</em>
+                                        <em class="small-btn btn-red">完结</em>
+                                        <em class="small-btn btn-blue">79.33万</em>
+                                    </div>
+                                    <p>一张神秘藏宝图，牵扯出一段盛世奇恋，一次意外偶遇，陆非夏绯闻缠身，他突然对她说：“和我结</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-right">
+
+                            <div class="side-item">
+                                <div class="side-item-inner">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <div class="side-item-inner odd">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <div class="side-item-inner">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <div class="side-item-inner odd">
+                                    <div class="div-img side-item-pic">
+                                        <a href="#">
+                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                        </a>
+                                    </div>
+                                    <div class="side-item-content">
+                                        <h4>帝少强娶：甜妻太可口</h4>
+                                        <span>爱笑的莜莜</span>
+                                        <div>
+                                            <em class="small-btn">古代言情</em>
+                                            <em class="small-btn btn-red">完结</em>
+                                            <em class="small-btn btn-blue">79.33万</em>
+                                        </div>
+                                        <p>他是m国最尊贵危险的男人，冷漠无情，脾气诡异，不近女色，一朝不甚，她强势扑倒睡了他，他却食之上瘾，宠之入味，某</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--最近更新-->
+            <div class="container">
+                <div class="container-inner">
+                    <h3 class="channelName">最近更新</h3>
+                    <div class="content update">
+                        <table class="table-list">
+                            <tbody>
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            <tr>
+                                <td class="classify">「历史」</td>
+                                <td class="name"><a href="#">隐婚偏执总裁：顾少，小心爱...</a></td>
+                                <td class="desc"><a href="#">138 突然有种恍如隔世和劫后余生的感觉</a></td>
+                                <td class="c1">星陨之光</td>
+                                <td class="counter">14.88万</td>
+                                <td class="timer">06-17 22:20</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </WebContainer>
 </template>
 <style>
     body{
@@ -10,8 +964,11 @@
     }
 </style>
 <script>
-
+    import  '../../assets/css/index';
     import {mapActions,mapGetters} from 'vuex';
+    import WebContainer from '../components/common/WebContainer';
+
+
 //    import titleMixin from '../../mixin/title-mixin';
     export default{
 //        mixins: [titleMixin],
@@ -34,6 +991,9 @@
         },
         methods:{
             ...mapActions(['fetchIndexList'])
+        },
+        components:{
+            WebContainer
         }
     }
 </script>

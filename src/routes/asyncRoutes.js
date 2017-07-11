@@ -5,9 +5,11 @@ if (typeof require.ensure !== "function") require.ensure = function(d, c) { c(re
 
 const indexComponent=  r => require.ensure([], () => r(require('../views/index.vue')), 'indexComponent')
 const aboutComponent=  r => require.ensure([], () => r(require('../views/about.vue')), 'aboutComponent')
+const notFoundComponent=  r => require.ensure([], () => r(require('../views/NotFound.vue')), 'noFoundComponent')
 
 
 export {
     indexComponent,
-    aboutComponent
+    aboutComponent,
+    notFoundComponent
 }

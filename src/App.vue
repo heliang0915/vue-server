@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import '../assets/css/index';
+    import '../assets/css/common';
 </script>
 <style>
     body{

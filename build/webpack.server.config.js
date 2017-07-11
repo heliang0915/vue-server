@@ -17,7 +17,7 @@ let config = merge(base, {
     },
     externals: nodeExternals({
         // do not externalize CSS files in case we need to import it from a dep
-        whitelist: /\.css$/
+        whitelist:[/\.css$/,/\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/]
     }),
     plugins: [
         new webpack.DefinePlugin({

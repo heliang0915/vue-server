@@ -9,7 +9,7 @@ var consoleLog = log4js.getLogger('console');
 let consoleLogger = consoleLog;
 let useLog = function(app) {
     // app.use(log4js.connectLogger(consoleLog, {level:'INFO', format:':method :url'}));
-    app.use(log4js.connectLogger(fileLog, {level:'auto', format:':method :url :status :response-timems :remote-addr :req[header]'}));
+    app.use(log4js.connectLogger(fileLog, {level:'auto', format:':method :url :status :response-timems :remote-addr'}));
 }
 
 export {consoleLogger,useLog,fileLog}

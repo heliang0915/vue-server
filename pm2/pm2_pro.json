@@ -7,7 +7,7 @@
   "log_date_format"  : "YYYY-MM-DD HH:mm:ss Z",
   "error_file"       : "pm2/logs/error.log",
   "out_file"         : "pm2/logs/access.log",
-  "pid_file"         : "pm2/pids/react-server.pid",
+  "pid_file"         : "pm2/pids/vue-server.pid",
   "instances"        : 6,
   "max_memory_restart": "100M", // 1 megabytes, e.g.: "2G", "10M", "100K", 1024 the default unit is byte.
   "watch"            : false,
