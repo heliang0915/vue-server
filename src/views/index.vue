@@ -6,32 +6,7 @@
     <WebContainer>
         <div class="main-inner">
             <!--banner图-->
-            <div class="banner">
-                <div class="banner-inner">
-                    <div class="banner-pic">
-                        <a href="/pc/pages/story_detail.html">
-                            <img src="../../assets//images/banner1.jpg">
-                        </a>
-                    </div>
-                    <ul class="banner-title-list">
-                        <li class="active">
-                            <a href="#">甜宠军婚：重生农家辣媳</a>
-                        </li>
-                        <li>
-                            <a href="#">甜宠军婚：重生农家辣媳</a>
-                        </li>
-                        <li>
-                            <a href="#">甜宠军婚：重生农家辣媳</a>
-                        </li>
-                        <li>
-                            <a href="#">甜宠军婚：重生农家辣媳</a>
-                        </li>
-                        <li>
-                            <a href="#">甜宠军婚：重生农家辣媳</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <Banner></Banner>
             <!--热门小说-->
             <div class="container hot">
                 <div class="container-inner">
@@ -40,7 +15,7 @@
                         <li>
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p>农门辣女：山里汉子甜宠妻</p>
@@ -48,7 +23,7 @@
                         <li>
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p>农门辣女：山里汉子甜宠妻</p>
@@ -56,7 +31,7 @@
                         <li>
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p>农门辣女：山里汉子甜宠妻</p>
@@ -64,7 +39,7 @@
                         <li>
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p>农门辣女：山里汉子甜宠妻</p>
@@ -72,7 +47,7 @@
                         <li>
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p>农门辣女：山里汉子甜宠妻</p>
@@ -80,7 +55,7 @@
                         <li>
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p>农门辣女：山里汉子甜宠妻</p>
@@ -88,7 +63,7 @@
                         <li>
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p>农门辣女：山里汉子甜宠妻</p>
@@ -96,7 +71,7 @@
                         <li>
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p>农门辣女：山里汉子甜宠妻</p>
@@ -122,7 +97,7 @@
                         <div class="free-item-inner">
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p><a href="###">总裁来袭：豪门联姻</a></p>
@@ -138,7 +113,7 @@
                         <div class="free-item-inner">
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p><a href="###">总裁来袭：豪门联姻</a></p>
@@ -154,7 +129,7 @@
                         <div class="free-item-inner">
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p><a href="###">总裁来袭：豪门联姻</a></p>
@@ -170,7 +145,7 @@
                         <div class="free-item-inner">
                             <div class="div-img">
                                 <a href="#">
-                                    <img src="../../assets//images/hot1.jpg" alt="图片">
+                                    <img src="../../assets/images/hot1.jpg" alt="图片">
                                 </a>
                             </div>
                             <p><a href="###">总裁来袭：豪门联姻</a></p>
@@ -391,17 +366,17 @@
                                 <ul class="imgs">
                                     <li>
                                         <a href="##">
-                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                            <img src="../../assets/images/new1.jpeg" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="##">
-                                            <img src="../../assets//images/new2.jpeg" alt="">
+                                            <img src="../../assets/images/new2.jpeg" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="##">
-                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                            <img src="../../assets/images/new1.jpeg" alt="">
                                         </a>
                                     </li>
                                 </ul>
@@ -423,7 +398,7 @@
                                 <div class="side-item-inner">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -442,7 +417,7 @@
                                 <div class="side-item-inner odd">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -461,7 +436,7 @@
                                 <div class="side-item-inner">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -480,7 +455,7 @@
                                 <div class="side-item-inner odd">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -510,17 +485,17 @@
                                 <ul class="imgs">
                                     <li>
                                         <a href="##">
-                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                            <img src="../../assets/images/new1.jpeg" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="##">
-                                            <img src="../../assets//images/new2.jpeg" alt="">
+                                            <img src="../../assets/images/new2.jpeg" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="##">
-                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                            <img src="../../assets/images/new1.jpeg" alt="">
                                         </a>
                                     </li>
                                 </ul>
@@ -542,7 +517,7 @@
                                 <div class="side-item-inner">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -561,7 +536,7 @@
                                 <div class="side-item-inner odd">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -580,7 +555,7 @@
                                 <div class="side-item-inner">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -599,7 +574,7 @@
                                 <div class="side-item-inner odd">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -638,67 +613,35 @@
                     </div>
                     <ul class="hot-list">
                         <li>
-                            <div class="div-img">
-                                <a href="#">
-                                    <img src="../../assets//images/re1.jpg" alt="图片">
-                                </a>
-                            </div>
+                            <HoverImg></HoverImg>
                             <p>农门辣女：山里汉子甜宠妻</p>
                         </li>
                         <li>
-                            <div class="div-img">
-                                <a href="#">
-                                    <img src="../../assets//images/re1.jpg" alt="图片">
-                                </a>
-                            </div>
+                            <HoverImg></HoverImg>
                             <p>农门辣女：山里汉子甜宠妻</p>
                         </li>
                         <li>
-                            <div class="div-img">
-                                <a href="#">
-                                    <img src="../../assets//images/re1.jpg" alt="图片">
-                                </a>
-                            </div>
+                            <HoverImg></HoverImg>
                             <p>农门辣女：山里汉子甜宠妻</p>
                         </li>
                         <li>
-                            <div class="div-img">
-                                <a href="#">
-                                    <img src="../../assets//images/re1.jpg" alt="图片">
-                                </a>
-                            </div>
+                            <HoverImg></HoverImg>
                             <p>农门辣女：山里汉子甜宠妻</p>
                         </li>
                         <li>
-                            <div class="div-img">
-                                <a href="#">
-                                    <img src="../../assets//images/re1.jpg" alt="图片">
-                                </a>
-                            </div>
+                            <HoverImg></HoverImg>
                             <p>农门辣女：山里汉子甜宠妻</p>
                         </li>
                         <li>
-                            <div class="div-img">
-                                <a href="#">
-                                    <img src="../../assets//images/re1.jpg" alt="图片">
-                                </a>
-                            </div>
+                            <HoverImg></HoverImg>
                             <p>农门辣女：山里汉子甜宠妻</p>
                         </li>
                         <li>
-                            <div class="div-img">
-                                <a href="#">
-                                    <img src="../../assets//images/re1.jpg" alt="图片">
-                                </a>
-                            </div>
+                            <HoverImg></HoverImg>
                             <p>农门辣女：山里汉子甜宠妻</p>
                         </li>
                         <li>
-                            <div class="div-img">
-                                <a href="#">
-                                    <img src="../../assets//images/re1.jpg" alt="图片">
-                                </a>
-                            </div>
+                            <HoverImg></HoverImg>
                             <p>农门辣女：山里汉子甜宠妻</p>
                         </li>
                     </ul>
@@ -714,17 +657,17 @@
                                 <ul class="imgs">
                                     <li>
                                         <a href="##">
-                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                            <img src="../../assets/images/new1.jpeg" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="##">
-                                            <img src="../../assets//images/new2.jpeg" alt="">
+                                            <img src="../../assets/images/new2.jpeg" alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="##">
-                                            <img src="../../assets//images/new1.jpeg" alt="">
+                                            <img src="../../assets/images/new1.jpeg" alt="">
                                         </a>
                                     </li>
                                 </ul>
@@ -746,7 +689,7 @@
                                 <div class="side-item-inner">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -765,7 +708,7 @@
                                 <div class="side-item-inner odd">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -784,7 +727,7 @@
                                 <div class="side-item-inner">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -803,7 +746,7 @@
                                 <div class="side-item-inner odd">
                                     <div class="div-img side-item-pic">
                                         <a href="#">
-                                            <img src="../../assets//images/hot1.jpg" alt="图片">
+                                            <img src="../../assets/images/hot1.jpg" alt="图片">
                                         </a>
                                     </div>
                                     <div class="side-item-content">
@@ -967,6 +910,8 @@
     import  '../../assets/css/index';
     import {mapActions,mapGetters} from 'vuex';
     import WebContainer from '../components/common/WebContainer';
+    import Banner from '../components/common/Banner';
+    import HoverImg from '../components/common/HoverImg';
 
 
 //    import titleMixin from '../../mixin/title-mixin';
@@ -993,7 +938,9 @@
             ...mapActions(['fetchIndexList'])
         },
         components:{
-            WebContainer
+            WebContainer,
+            Banner,
+            HoverImg
         }
     }
 </script>
