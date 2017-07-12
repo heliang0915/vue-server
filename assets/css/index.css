@@ -7,7 +7,7 @@
 
 
 .hot .container-inner .hot-list li, .recommend .container-inner .hot-list li {
-  float: left;
+  /*float: left;*/
   width: 105px;
   margin-right: 19px;
 }
@@ -225,7 +225,9 @@
   font-size: 14px;
   color: #ff3955;
 }
-
+.hot-list{
+  display: flex;
+}
 .limit-free .limit-free-list li .free-item-first h3 {
   font-size: 17px;
   font-weight: bold;

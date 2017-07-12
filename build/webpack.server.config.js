@@ -15,8 +15,8 @@ let config = merge(base, {
         filename: 'server-bundle.js',
         libraryTarget: 'commonjs2'
     },
+    //定义node编译时的白名单
     externals: nodeExternals({
-        // do not externalize CSS files in case we need to import it from a dep
         whitelist:[/\.css$/,/\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/]
     }),
     plugins: [

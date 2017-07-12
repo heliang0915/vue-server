@@ -1,10 +1,24 @@
 <template>
     <div class="div-img">
-        <a href="#">
-            <img src="../../../assets/images/hot1.jpg" alt="图片">
+        <a :href="link">
+            <img :src="pic" alt="图片">
         </a>
     </div>
 </template>
+<script>
+    export default{
+      props:{
+          pic:{
+              type:String,
+              required:true
+          },
+          link:{
+              type:String,
+              required:true
+          }
+      }
+    }
+</script>
 <style>
     .div-img {
         width: 105px;

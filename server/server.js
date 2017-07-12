@@ -19,6 +19,7 @@ App.use(cookieParser());
 App.use(bodyParser.json());
 App.use(bodyParser.urlencoded({extended:false}));
 App.use('/dist',express.static(path.join(__dirname,'/../dist/')));
+App.use('/assets',express.static(path.join(__dirname,'/../assets/')));
 
 App.use((req,res,next)=>{
     let date=new Date();

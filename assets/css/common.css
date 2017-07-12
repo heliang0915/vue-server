@@ -372,6 +372,7 @@ ul {
 .wrap .main .main-inner {
   overflow: auto;
   margin: 12px 0 8px;
+  width:100%;
 }
 
 .wrap .main .main-inner .block {
@@ -463,10 +464,11 @@ ul {
 }
 
 .small-btn {
-  padding: 0 2px;
+  padding: 2px 4px;
   color: #ffa100;
   border: 1px solid #ffa100;
   font-size: 12px;
+  margin: 0 2px;
 }
 
 .btn-red {
@@ -496,6 +498,7 @@ ul {
   margin-bottom: 20px;
   height: auto;
   overflow: hidden;
+  width: 100%;
 }
 
 .container .container-inner {
@@ -553,67 +556,7 @@ ul {
   float: left;
 }
 
-.rank-item {
-  width: 25%;
-  margin-top: 30px;
-  float: left;
-}
 
-.rank-item h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.rank-item ul {
-  padding-right: 25px;
-}
-
-.rank-item ul li {
-  border-bottom: 1px solid #ccc;
-  padding: 7px 0;
-}
-
-.rank-item ul li a {
-  color: #1a1a1a;
-  text-decoration: none;
-  font-size: 14px;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.rank-item ul li a:hover {
-  color: #ff3955 !important;
-}
-
-.rank-item ul li em {
-  display: inline-block;
-  height: 18px;
-  line-height: 18px;
-  font-size: 13px;
-  width: 18px;
-  text-align: center;
-  margin-right: 5px;
-}
-
-.rank-item ul li:nth-last-child(1) {
-  border-bottom: 0px solid #ccc;
-}
-
-.rank-item ul .first em {
-  background: #ff3955;
-  color: #FFF;
-}
-
-.rank-item ul .second em {
-  background: #e67225;
-  color: #FFF;
-}
-
-.rank-item ul .three em {
-  background: #e6bf25;
-  color: #FFF;
-}
 
 .category {
   padding: 5px 0;
