@@ -250,59 +250,10 @@
                     </div>
                 </div>
             </div>
-            <!--分类推荐-->
-            <div class="container recommend">
-                <div class="container-inner">
-                    <div class="recommend-title clearfix">
-                        <h3 class="channelName">分类推荐</h3>
-                        <div class="classify-list">
-                            <ul>
-                                <li class="active">仙侠奇缘1</li>
-                                <li>仙侠奇缘1</li>
-                                <li>仙侠奇缘1</li>
-                                <li>仙侠奇缘1</li>
-                                <li>仙侠奇缘1</li>
-                                <li>仙侠奇缘1</li>
-                            </ul>
-                        </div>
 
-                    </div>
-                    <ul class="hot-list">
-                        <li>
-                            <HoverImg></HoverImg>
-                            <p>农门辣女：山里汉子甜宠妻</p>
-                        </li>
-                        <li>
-                            <HoverImg></HoverImg>
-                            <p>农门辣女：山里汉子甜宠妻</p>
-                        </li>
-                        <li>
-                            <HoverImg></HoverImg>
-                            <p>农门辣女：山里汉子甜宠妻</p>
-                        </li>
-                        <li>
-                            <HoverImg></HoverImg>
-                            <p>农门辣女：山里汉子甜宠妻</p>
-                        </li>
-                        <li>
-                            <HoverImg></HoverImg>
-                            <p>农门辣女：山里汉子甜宠妻</p>
-                        </li>
-                        <li>
-                            <HoverImg></HoverImg>
-                            <p>农门辣女：山里汉子甜宠妻</p>
-                        </li>
-                        <li>
-                            <HoverImg></HoverImg>
-                            <p>农门辣女：山里汉子甜宠妻</p>
-                        </li>
-                        <li>
-                            <HoverImg></HoverImg>
-                            <p>农门辣女：山里汉子甜宠妻</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!--分类推荐-->
+            <HotStory class="recommend" :isShow="true"></HotStory>
+
             <!--编辑推荐-->
             <div class="container new-book">
                 <div class="container-inner">

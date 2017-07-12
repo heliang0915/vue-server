@@ -1,7 +1,26 @@
 <template>
     <div class="container hot">
         <div class="container-inner">
-            <h3 class="channelName">热门小说</h3>
+
+            <h3 class="channelName" v-if="isShow==false">热门小说</h3>
+
+            <div class="recommend-title clearfix" v-else>
+                <h3 class="channelName">分类推荐</h3>
+                <div class="classify-list">
+                    <ul>
+                        <li class="active">仙侠奇缘1</li>
+                        <li>仙侠奇缘1</li>
+                        <li>仙侠奇缘1</li>
+                        <li>仙侠奇缘1</li>
+                        <li>仙侠奇缘1</li>
+                        <li>仙侠奇缘1</li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+
             <ul class="hot-list">
                 <li v-for="(item,index) in list">
                     <HoverImg  :key="index" :pic="item.pic" :link="item.link"></HoverImg>
@@ -33,6 +52,12 @@
 <script>
     import HoverImg from '../components/common/HoverImg';
     export default {
+
+        props:{
+            isShow:{
+                type:Boolean,
+                default:false
+            }},
         data(){
             return {
                 list: [
