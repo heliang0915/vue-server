@@ -163,17 +163,22 @@ router.route('/data').all((req,res)=> {
 router.route('/uploadFile').all((req,res)=>{
     let json={pic:'//img13.360buyimg.com/n1/g13/M04/11/0C/rBEhUlLTSwkIAAAAAAGhELKHr2sAAH3BwEuo-wAAaEo805.jpg'}
     res.send(json)
-})
+});
+// router.route('/')
 router.route("*").all((req,res,next)=>{
     let context={
         title: '默认标题',
         url:req.originalUrl
     }
+    console.log(`req.originalUrl>>>>${req.originalUrl}`);
     context=mergeContext(context,req.originalUrl);
+    const s = Date.now()
     renderer.renderToString(context, (err, html) => {
+        console.log(`render`)
         if (err) {
             next(err);
         } else {
+            console.log(context.state);
             res.end(html);
         }
     })

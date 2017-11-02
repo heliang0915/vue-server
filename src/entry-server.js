@@ -17,7 +17,10 @@ export default  context=>{
                     return component.asyncData(store)
                 }
             })
+            const s = Date.now()
             Promise.all(ary).then(() => {
+                console.log(`data pre-fetch: ${Date.now() - s}ms`)
+                console.log(`store.state>>>>${JSON.stringify(store.state)}`)
                 context.state = store.state;
                 resolve(app)
             }).catch((err)=>{

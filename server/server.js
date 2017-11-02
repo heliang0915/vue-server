@@ -8,12 +8,17 @@ import api from './router/api';
 import {useLog,fileLog} from './logs/logs';
 import index from './router/';
 import fs from 'fs';
+import compression from 'compression';
 
 let App=express();
 
 //日志配置
 useLog(App);
 
+// 启用gzip压缩
+App.use(compression({
+    threshold:0
+}));
 App.use(debug('dev'));
 App.use(cookieParser());
 App.use(bodyParser.json());
@@ -30,14 +35,8 @@ App.use((req,res,next)=>{
     res.header("Expires",date.toUTCString());
     next();
 })
-
-
 App.use("/api/",api)
 App.use("/",index);
-
-
-
-
 // catch 404 and forward to error handler
 App.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -45,9 +44,7 @@ App.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
-
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (App.get('env') === 'development') {

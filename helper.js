@@ -1,5 +1,6 @@
 /**
- *
+ *工具类
+ * @author heliang
 */
 let os=require('os');
 //获取本机IP
@@ -16,3 +17,11 @@ let getLocalIp=()=>{
     return ip;
 }
 exports.getLocalIp=getLocalIp;
+
+
+// while (true){
+//     console.log(1);
+//     while (true){
+//         console.log(2);
+//     }
+// }

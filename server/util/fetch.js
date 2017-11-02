@@ -3,7 +3,6 @@
  */
 import fetch from 'isomorphic-fetch';
 let apiURl="https://api.github.com";
-
 //转发请求
 export default function(url){
     // url=apiURl+url;
@@ -23,9 +22,7 @@ export default function(url){
             url=apiURl+pathName+"?"+queryStr;
         }
     }
-
     console.log("代理后的url地址[%s]",url)
-
     return fetch(url).then((res)=>res.json()).then((data)=>{
         return {
             data,

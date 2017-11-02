@@ -1,7 +1,7 @@
 /**
  *   SEO和路由配置
  */
-import { indexComponent,aboutComponent,notFoundComponent} from '../routes/asyncRoutes';
+import { indexComponent,aboutComponent,weightIndexComponent,notFoundComponent} from '../routes/asyncRoutes';
 
 let seoMap={
     "/":{
@@ -20,6 +20,14 @@ let seoMap={
         },
         component:aboutComponent
     },
+    "/weight":{
+        seo: {
+            title: "组件测试",
+            keywords: "组件测试关键字",
+            description: "组件测试描述"
+        },
+        component:weightIndexComponent
+    },
     "*":{
         seo: {
             title: "找不到了",
@@ -29,11 +37,5 @@ let seoMap={
         component:notFoundComponent
     }
 }
-
-
-
-
-
-
 
 export default seoMap;

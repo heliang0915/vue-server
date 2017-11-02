@@ -5,6 +5,7 @@ var path = require('path')
 const vueConfig = require('./vue-loader.config');
 var ExtractTextPlugin=require("extract-text-webpack-plugin");
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var webpack=require("webpack");
 
 //定义公共路径
@@ -73,8 +74,8 @@ module.exports = {
     //性能配置
     performance: {
         //此选项根据入口起点的最大体积，控制 webpack 何时生成性能提示  单位字节
-        maxEntrypointSize: 300000,
-        maxAssetSize: 100000,
+        maxEntrypointSize: 512000, //入口文件最大体积
+        maxAssetSize: 512000,//资源最大体积
         hints: isProd ? 'warning' : false
     },
     plugins: isProd?
@@ -87,6 +88,6 @@ module.exports = {
             })
         ]
         :
-        [new FriendlyErrorsPlugin()]
+        [ new OpenBrowserPlugin({ url: 'http://localhost:4000' }),new FriendlyErrorsPlugin()]
 }
  

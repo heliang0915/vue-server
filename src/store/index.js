@@ -16,5 +16,4 @@ var store=new Vuex.Store({
     getters
 })
 
-
 export default  store;

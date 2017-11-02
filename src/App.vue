@@ -7,7 +7,10 @@
     import '../assets/css/common';
 </script>
 <style>
-    body{
-        background: blue;
-    }
+    /*body{*/
+        /*background: blue;*/
+    /*}*/
+    /*p{*/
+        /*font-size:100px;*/
+    /*}*/
 </style>
