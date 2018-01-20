@@ -1,9 +1,9 @@
 /**
- * Created by hotread on 2017/6/8.
+ * 转发请求
  */
 import fetch from 'isomorphic-fetch';
 let apiURl="https://api.github.com";
-//转发请求
+
 export default function(url){
     // url=apiURl+url;
     if(url.indexOf("/api/")>-1){

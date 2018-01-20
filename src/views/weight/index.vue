@@ -38,6 +38,9 @@
             <x-select v-model="selectV" :list="selectList" @changSelect="changeSelect"></x-select>
             {{selectV}}
         </div>
+        <div class="item">
+            <x-packer></x-packer>
+        </div>
     </div>
 </template>
 <style>
@@ -48,10 +51,10 @@
 <script>
     import Check from '../../weight/form/check/check';
     import Radio from '../../weight/form/radio/radio';
-    import XRadio from '../../weight/form/radio/tRadio';
     import XInput from '../../weight/form/input/Input';
     import XSelect from '../../weight/form/select/Select';
     import XDraw from '../../weight/draw/draw';
+    import XPacker from '../../weight/packer/packer';
     export default {
         data(){
             return {
@@ -132,7 +135,8 @@
             Check,
             Radio,
             XInput,
-            XRadio,
+            XPacker,
+            // XRadio,
             XSelect
         }
     }

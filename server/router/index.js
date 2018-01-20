@@ -178,7 +178,7 @@ router.route("*").all((req,res,next)=>{
         if (err) {
             next(err);
         } else {
-            console.log(context.state);
+            // console.log(context.state);
             res.end(html);
         }
     })

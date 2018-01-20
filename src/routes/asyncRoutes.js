@@ -8,7 +8,7 @@ const indexComponent=  r => require.ensure([], () => r(require('../views/index.v
 const aboutComponent=  r => require.ensure([], () => r(require('../views/about.vue')), 'aboutComponent')
 
 //测试组件首页
-const weightIndexComponent=  r => require.ensure([], () => r(require('../views/weight/index.vue')), 'aboutComponent')
+const weightIndexComponent=  r => require.ensure([], () => r(require('../views/weight/index.vue')), 'weightComponent')
 
 
 const notFoundComponent=  r => require.ensure([], () => r(require('../views/NotFound.vue')), 'noFoundComponent')

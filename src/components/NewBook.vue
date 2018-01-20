@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="side-right">
-                    <StoryItem v-for="i in 4"></StoryItem>
+                    <StoryItem v-for="i in 4" :key="i"></StoryItem>
                 </div>
             </div>
         </div>
