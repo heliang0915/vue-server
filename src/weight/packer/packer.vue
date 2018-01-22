@@ -1,25 +1,19 @@
 <template>
 <div>
-    <input type="text" @change="change">
+    <button @click="changeState">show</button>
     <div class="dp-wrap" :style="{transform: 'translate('+dialogTran+'%)'}" v-cloak>
         <div class="dp-title">
-            <span class="dp-btn dp-lf" @touchEnd="cancelHandler">取消</span>
-            <span class="dp-btn ok dp-lr" @touchEnd="okHandler">确定</span>
+            <span class="dp-btn dp-lf" @click="cancelHandler">取消</span>
+            <span class="dp-btn ok dp-lr" @click="okHandler">确定</span>
         </div>
         <div class="dp-container">
             <span class="dp-split"></span>
             <ul class="dp-list">
-                <li class="dp-item" :class="{'dp-item-active':active}"  @touchmove="touchMoveFn" @touchend="touchEndFn"  @touchstart="touchStartFn" :style="{transform: 'translate3d(0,'+translateY+'px,0)'}" >
-                    <div v-for="(col,index) in col1" :class="[dpIndex==index?'dp-active':'']">
-                        {{col}}
+                <li class="dp-item" :ref="'item_'+key" v-for="(item,key) in packerData"   @touchmove="touchMoveFn" @touchend="touchEndFn"  @touchstart="touchStartFn">
+                    <div :data-val="pk.val" v-for="(pk) in item">
+                        {{pk.label}}
                     </div>
                 </li>
-                <li class="dp-item" :class="{'dp-item-active':active}"  @touchmove="touchMoveFn" @touchend="touchEndFn"  @touchstart="touchStartFn" :style="{transform: 'translate3d(0,'+translateY+'px,0)'}" >
-                    <div v-for="(col,index) in col2" :class="[dpIndex==index?'dp-active':'']">
-                        {{col}}
-                    </div>
-                </li>
-
             </ul>
         </div>
     </div>
@@ -113,7 +107,7 @@
         background-repeat: no-repeat;
         position: absolute;
         left: 0;
-        top: 2.4rem;
+        top: 6.44em;
         z-index: -1;
     }
 
@@ -131,21 +125,26 @@
 <script>
     export default {
         name: 'x-packer',
+        props:{
+            packerData:{
+                type:Object,
+                default:[]
+            }
+        },
         data() {
             return {
-                col1: ["北京市", "天津市", "河北省", "山西省", "内蒙古", "辽宁省", "吉林省", "黑龙江省", "上海市", "江苏省", "浙江省", "安徽省", "福建省", "江西省", "山东省", "河南省", "湖北省", "湖南省", "广东省", "广西省", "海南省", "重庆市", "四川省", "贵州省", "云南省", "西藏省", "陕西省", "甘肃省", "青海省", "宁夏省", "新疆省", "台湾", "香港特区", "澳门特区"],
-                col2: ["北京市2", "天津市2", "河北省2"],
+                // packerData:{
+                //     col1:[{"label":"天津市","val":"bj"},{"label":"河北省","val":"bj"},{"label":"山西省","val":"bj"},{"label":"内蒙古","val":"bj"},{"label":"辽宁省","val":"bj"},{"label":"吉林省","val":"bj"},{"label":"黑龙江省","val":"bj"},{"label":"上海市","val":"bj"},{"label":"江苏省","val":"bj"},{"label":"浙江省","val":"bj"},{"label":"安徽省","val":"bj"},{"label":"福建省","val":"bj"},{"label":"江西省","val":"bj"},{"label":"山东省","val":"bj"},{"label":"河南省","val":"bj"},{"label":"湖北省","val":"bj"},{"label":"湖南省","val":"bj"},{"label":"广东省","val":"bj"},{"label":"广西省","val":"bj"},{"label":"海南省","val":"bj"},{"label":"重庆市","val":"bj"},{"label":"四川省","val":"bj"},{"label":"贵州省","val":"bj"},{"label":"云南省","val":"bj"},{"label":"西藏省","val":"bj"},{"label":"陕西省","val":"bj"},{"label":"甘肃省","val":"bj"},{"label":"青海省","val":"bj"},{"label":"宁夏省","val":"bj"},{"label":"新疆省","val":"bj"},{"label":"台湾","val":"bj"},{"label":"香港特区","val":"bj"},{"label":"澳门特区","val":"bj"}],
+                //     col2:[{"label":"天津市","val":"bj"},{"label":"河北省","val":"bj"},{"label":"山西省","val":"bj"},{"label":"内蒙古","val":"bj"},{"label":"辽宁省","val":"bj"},{"label":"吉林省","val":"bj"},{"label":"黑龙江省","val":"bj"},{"label":"上海市","val":"bj"},{"label":"江苏省","val":"bj"},{"label":"浙江省","val":"bj"},{"label":"安徽省","val":"bj"},{"label":"福建省","val":"bj"},{"label":"江西省","val":"bj"},{"label":"山东省","val":"bj"},{"label":"河南省","val":"bj"},{"label":"湖北省","val":"bj"},{"label":"湖南省","val":"bj"},{"label":"广东省","val":"bj"},{"label":"广西省","val":"bj"},{"label":"海南省","val":"bj"},{"label":"重庆市","val":"bj"},{"label":"四川省","val":"bj"},{"label":"贵州省","val":"bj"},{"label":"云南省","val":"bj"},{"label":"西藏省","val":"bj"},{"label":"陕西省","val":"bj"},{"label":"甘肃省","val":"bj"},{"label":"青海省","val":"bj"},{"label":"宁夏省","val":"bj"},{"label":"新疆省","val":"bj"},{"label":"台湾","val":"bj"},{"label":"香港特区","val":"bj"},{"label":"澳门特区","val":"bj"}],
+                //     col3:[{"label":"天津市","val":"bj"},{"label":"河北省","val":"bj"},{"label":"山西省","val":"bj"},{"label":"内蒙古","val":"bj"},{"label":"辽宁省","val":"bj"},{"label":"吉林省","val":"bj"},{"label":"黑龙江省","val":"bj"},{"label":"上海市","val":"bj"},{"label":"江苏省","val":"bj"},{"label":"浙江省","val":"bj"},{"label":"安徽省","val":"bj"},{"label":"福建省","val":"bj"},{"label":"江西省","val":"bj"},{"label":"山东省","val":"bj"},{"label":"河南省","val":"bj"},{"label":"湖北省","val":"bj"},{"label":"湖南省","val":"bj"},{"label":"广东省","val":"bj"},{"label":"广西省","val":"bj"},{"label":"海南省","val":"bj"},{"label":"重庆市","val":"bj"},{"label":"四川省","val":"bj"},{"label":"贵州省","val":"bj"},{"label":"云南省","val":"bj"},{"label":"西藏省","val":"bj"},{"label":"陕西省","val":"bj"},{"label":"甘肃省","val":"bj"},{"label":"青海省","val":"bj"},{"label":"宁夏省","val":"bj"},{"label":"新疆省","val":"bj"},{"label":"台湾","val":"bj"},{"label":"香港特区","val":"bj"},{"label":"澳门特区","val":"bj"}],
+                // },
                 dialogTran: '-100',
                 mask:false,
-                translateY: 0,
-                startPos:0,
-                movePos:0,
-                active:false,
-                dpIndex:-1
+                active:false
             }
         },
         methods: {
-            change: function () {
+            changeState: function () {
                 if (this.dialogTran == -100) {
                     this.dialogTran = 0;
                     this.mask=true;
@@ -156,27 +155,29 @@
                     this.scrollMove(0);
                 }
             },
-            okHandler(){
-
-                console.log('ok'+this.col1[this.dpIndex]);
+            okHandler: function (){
+                console.log(JSON.stringify(this.getSelected()));
             },
-            cancelHandler(){
+            cancelHandler: function (){
                 console.log('cancelHandler');
+                this.changeState()
             },
             touchStartFn: function (e) {
+                var dom=e.target.parentNode;
                 e.preventDefault();
                 e = e.changedTouches[0];
-                this.startPos = e.pageY;
+                dom.startPos=e.pageY;
             },
             touchMoveFn: function (e) {
-                //console.log(e.target);
+                var dom=e.target.parentNode;
                 e.preventDefault();
                 e = e.changedTouches[0];
                 var _self = this;
                 //上一次滚动的位置
-                var oldPos =this.translateY;
-                this.movePos=e.pageY;
-                var add = (Math.abs(this.movePos) - Math.abs(this.startPos)) * 3 / 20;
+                var oldPos =dom.translateY==undefined?0:dom.translateY;
+                // this.movePos=e.pageY;
+                dom.movePos=e.pageY;
+                var add = (Math.abs(dom.movePos) - Math.abs(dom.startPos)) * 3 / 20;
                 var size = _self.getSize();
                 //小幅度滚动时的判断
                 if (Math.abs(add) < 2) {
@@ -190,11 +191,11 @@
                 //边界判断
                 if (Math.abs(pos) >= Math.abs(max)) {
                     pos = -max;
-                    console.log(pos);
                 } else if (pos > 0) {
                     pos = 0;
                 }
-                this.translateY=pos;
+                dom.style.WebkitTransform="translate3d(0,"+pos+"px,0)"
+                dom.translateY=pos;
             },
             getItems: function () {
                 var items = document.querySelectorAll(".dp-item");
@@ -206,9 +207,10 @@
                 return size;
             },
             touchEndFn: function (e) {
+                var dom=e.target.parentNode;
                 var _self = this;
                 e.preventDefault();
-                _self.selectedItem();
+                _self.selectedItem(dom);
             },
             //滚动动作
             scrollMove: function (index) {
@@ -216,23 +218,31 @@
                 var items = _self.getItems();
                 var size = _self.getSize();
                 [].slice.apply(items).forEach(function (item, ind) {
-                    // item.style.WebkitTransform = "translate3d(0,-" + (ind + 1 + ind * 2) * size + "px,0)";
-                    _self.translateY=-index* size;
-                    _self.selectedItem();
+                    item.style.WebkitTransform = "translate3d(0,-" + (ind + 1 + ind * 2) * size + "px,0)";
+                    item.translateY=-index* size;
+                    _self.selectedItem(item);
                 })
             },
 
             //最后选中元素
-            selectedItem: function () {
+            selectedItem: function (dom) {
                 var size = this.getSize();
-                var oldPos =this.translateY;
+                var oldPos =dom.translateY;
                 //获取整数倍位置防止滑动过头
                 oldPos = Math.floor(this.getInteger(oldPos));
                 //每一个元素对应的索引以便快速能够找到对应元素
                 var index = Math.floor(Math.abs(oldPos / size));
-                this.translateY=oldPos;
-                this.active=true;
-                this.dpIndex=index;
+                dom.translateY=oldPos;
+                dom.style.WebkitTransform="translate3d(0,"+oldPos+"px,0)";
+                for(var i=0;i<dom.parentNode.children.length;i++){
+                    dom.parentNode.children[i].className="dp-item";
+                }
+                dom.className="dp-item dp-item-active";
+                dom.setAttribute('selectIndex',index);
+                for(var i=0;i<dom.children.length;i++){
+                    dom.children[i].className="";
+                }
+                dom.children[index].className="dp-active";
 
             },
             //获取选中列表长度
@@ -245,6 +255,16 @@
             getInteger: function (pos) {
                 var size = this.getSize();
                 return Math.floor(pos / size) * size;
+            },
+            getSelected:function(){
+                var _self=this;
+                var selectAry=[];
+                Object.keys(this.packerData).forEach(function (key,index) {
+                   var selectIndex= _self.$refs['item_'+key][0].getAttribute('selectIndex');
+                   var selectItemData=_self.packerData[key][selectIndex];
+                    selectAry.push(selectItemData);
+                })
+                return selectAry;
             }
         }
     }

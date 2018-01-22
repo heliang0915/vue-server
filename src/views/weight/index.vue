@@ -39,7 +39,7 @@
             {{selectV}}
         </div>
         <div class="item">
-            <x-packer></x-packer>
+            <x-packer :packerData="packerData" @selectVal></x-packer>
         </div>
     </div>
 </template>
@@ -58,6 +58,11 @@
     export default {
         data(){
             return {
+                packerData:{
+                    col1:[{"label":"天津市","val":"bj"},{"label":"河北省","val":"bj"},{"label":"山西省","val":"bj"},{"label":"内蒙古","val":"bj"},{"label":"辽宁省","val":"bj"},{"label":"吉林省","val":"bj"},{"label":"黑龙江省","val":"bj"},{"label":"上海市","val":"bj"},{"label":"江苏省","val":"bj"},{"label":"浙江省","val":"bj"},{"label":"安徽省","val":"bj"},{"label":"福建省","val":"bj"},{"label":"江西省","val":"bj"},{"label":"山东省","val":"bj"},{"label":"河南省","val":"bj"},{"label":"湖北省","val":"bj"},{"label":"湖南省","val":"bj"},{"label":"广东省","val":"bj"},{"label":"广西省","val":"bj"},{"label":"海南省","val":"bj"},{"label":"重庆市","val":"bj"},{"label":"四川省","val":"bj"},{"label":"贵州省","val":"bj"},{"label":"云南省","val":"bj"},{"label":"西藏省","val":"bj"},{"label":"陕西省","val":"bj"},{"label":"甘肃省","val":"bj"},{"label":"青海省","val":"bj"},{"label":"宁夏省","val":"bj"},{"label":"新疆省","val":"bj"},{"label":"台湾","val":"bj"},{"label":"香港特区","val":"bj"},{"label":"澳门特区","val":"bj"}],
+                    col2:[{"label":"天津市","val":"bj"},{"label":"河北省","val":"bj"},{"label":"山西省","val":"bj"},{"label":"内蒙古","val":"bj"},{"label":"辽宁省","val":"bj"},{"label":"吉林省","val":"bj"},{"label":"黑龙江省","val":"bj"},{"label":"上海市","val":"bj"},{"label":"江苏省","val":"bj"},{"label":"浙江省","val":"bj"},{"label":"安徽省","val":"bj"},{"label":"福建省","val":"bj"},{"label":"江西省","val":"bj"},{"label":"山东省","val":"bj"},{"label":"河南省","val":"bj"},{"label":"湖北省","val":"bj"},{"label":"湖南省","val":"bj"},{"label":"广东省","val":"bj"},{"label":"广西省","val":"bj"},{"label":"海南省","val":"bj"},{"label":"重庆市","val":"bj"},{"label":"四川省","val":"bj"},{"label":"贵州省","val":"bj"},{"label":"云南省","val":"bj"},{"label":"西藏省","val":"bj"},{"label":"陕西省","val":"bj"},{"label":"甘肃省","val":"bj"},{"label":"青海省","val":"bj"},{"label":"宁夏省","val":"bj"},{"label":"新疆省","val":"bj"},{"label":"台湾","val":"bj"},{"label":"香港特区","val":"bj"},{"label":"澳门特区","val":"bj"}],
+                    col3:[{"label":"天津市","val":"bj"},{"label":"河北省","val":"bj"},{"label":"山西省","val":"bj"},{"label":"内蒙古","val":"bj"},{"label":"辽宁省","val":"bj"},{"label":"吉林省","val":"bj"},{"label":"黑龙江省","val":"bj"},{"label":"上海市","val":"bj"},{"label":"江苏省","val":"bj"},{"label":"浙江省","val":"bj"},{"label":"安徽省","val":"bj"},{"label":"福建省","val":"bj"},{"label":"江西省","val":"bj"},{"label":"山东省","val":"bj"},{"label":"河南省","val":"bj"},{"label":"湖北省","val":"bj"},{"label":"湖南省","val":"bj"},{"label":"广东省","val":"bj"},{"label":"广西省","val":"bj"},{"label":"海南省","val":"bj"},{"label":"重庆市","val":"bj"},{"label":"四川省","val":"bj"},{"label":"贵州省","val":"bj"},{"label":"云南省","val":"bj"},{"label":"西藏省","val":"bj"},{"label":"陕西省","val":"bj"},{"label":"甘肃省","val":"bj"},{"label":"青海省","val":"bj"},{"label":"宁夏省","val":"bj"},{"label":"新疆省","val":"bj"},{"label":"台湾","val":"bj"},{"label":"香港特区","val":"bj"},{"label":"澳门特区","val":"bj"}],
+                },
                 list: [
                     {prize: "11", id: "1111"},
                     {prize: "22", id: "2222"},
