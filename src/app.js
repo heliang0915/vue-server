@@ -3,15 +3,27 @@
  * */
 import Vue from 'vue';
 import App from './App.vue';
-import VueRouter from 'vue-router';
 import {createRouter} from './router';
-// import initFetch from './util/fetch';
+
+
+// import VueAwesomeSwiper from 'vue-awesome-swiper';
 import store from './store';
+
 
 export function createApp() {
     Vue.config.errorHandler = function (err, vm) {
         console.log('Vue出现错误%s', err);
     }
+
+    // Vue.use(VueAwesomeSwiper);
+    // console.dir(process);
+
+    if (process.browser) {
+        require ('swiper/dist/css/swiper.css')
+        const VueAwesomeSwiper = require('vue-awesome-swiper/ssr')
+        Vue.use(VueAwesomeSwiper)
+    }
+
     //初始化fetch
     // initFetch();
     let router = createRouter();

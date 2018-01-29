@@ -34,12 +34,21 @@
             {{inputVal}}
             <button @click="checkValidate">校验状态</button>
         </div>
-        <div>
-            <x-select v-model="selectV" :list="selectList" @changSelect="changeSelect"></x-select>
-            {{selectV}}
-        </div>
+
         <div class="item">
-            <x-packer :packerData="packerData" @selectVal></x-packer>
+            <span style="margin-left: 100px;">选择</span>
+            <x-select  placeholder="请选择..." :list="selectList" valFiled="val" labelFiled="txt"  @changSelect="changeSelect">
+            </x-select>
+        </div>
+
+        <!--<div>-->
+            <!--<x-select v-model="selectV" :list="selectList" @changSelect="changeSelect"></x-select>-->
+            <!--{{selectV}}-->
+        <!--</div>-->
+
+        <div class="item">
+            <x-packer :packerData="packerData" callbackField="label" @getSelect="getSelect" ></x-packer>
+            <label>选中的值:{{packerTxt}}</label>
         </div>
     </div>
 </template>
@@ -63,6 +72,7 @@
                     col2:[{"label":"天津市","val":"bj"},{"label":"河北省","val":"bj"},{"label":"山西省","val":"bj"},{"label":"内蒙古","val":"bj"},{"label":"辽宁省","val":"bj"},{"label":"吉林省","val":"bj"},{"label":"黑龙江省","val":"bj"},{"label":"上海市","val":"bj"},{"label":"江苏省","val":"bj"},{"label":"浙江省","val":"bj"},{"label":"安徽省","val":"bj"},{"label":"福建省","val":"bj"},{"label":"江西省","val":"bj"},{"label":"山东省","val":"bj"},{"label":"河南省","val":"bj"},{"label":"湖北省","val":"bj"},{"label":"湖南省","val":"bj"},{"label":"广东省","val":"bj"},{"label":"广西省","val":"bj"},{"label":"海南省","val":"bj"},{"label":"重庆市","val":"bj"},{"label":"四川省","val":"bj"},{"label":"贵州省","val":"bj"},{"label":"云南省","val":"bj"},{"label":"西藏省","val":"bj"},{"label":"陕西省","val":"bj"},{"label":"甘肃省","val":"bj"},{"label":"青海省","val":"bj"},{"label":"宁夏省","val":"bj"},{"label":"新疆省","val":"bj"},{"label":"台湾","val":"bj"},{"label":"香港特区","val":"bj"},{"label":"澳门特区","val":"bj"}],
                     col3:[{"label":"天津市","val":"bj"},{"label":"河北省","val":"bj"},{"label":"山西省","val":"bj"},{"label":"内蒙古","val":"bj"},{"label":"辽宁省","val":"bj"},{"label":"吉林省","val":"bj"},{"label":"黑龙江省","val":"bj"},{"label":"上海市","val":"bj"},{"label":"江苏省","val":"bj"},{"label":"浙江省","val":"bj"},{"label":"安徽省","val":"bj"},{"label":"福建省","val":"bj"},{"label":"江西省","val":"bj"},{"label":"山东省","val":"bj"},{"label":"河南省","val":"bj"},{"label":"湖北省","val":"bj"},{"label":"湖南省","val":"bj"},{"label":"广东省","val":"bj"},{"label":"广西省","val":"bj"},{"label":"海南省","val":"bj"},{"label":"重庆市","val":"bj"},{"label":"四川省","val":"bj"},{"label":"贵州省","val":"bj"},{"label":"云南省","val":"bj"},{"label":"西藏省","val":"bj"},{"label":"陕西省","val":"bj"},{"label":"甘肃省","val":"bj"},{"label":"青海省","val":"bj"},{"label":"宁夏省","val":"bj"},{"label":"新疆省","val":"bj"},{"label":"台湾","val":"bj"},{"label":"香港特区","val":"bj"},{"label":"澳门特区","val":"bj"}],
                 },
+                packerTxt:"",
                 list: [
                     {prize: "11", id: "1111"},
                     {prize: "22", id: "2222"},
@@ -71,12 +81,17 @@
                     {prize: "55", id: "5555"},
                     {prize: "66", id: "6666"}
                 ],
+                selectList:[
+                    {txt:'宋江',val:'1'},
+                    {txt:'鲁智深',val:'2'},
+                    {txt:'武松',val:'3'},
+                    {txt:'武大郎',val:'4'},
+                    {txt:'程咬金',val:'5'},
+                    {txt:'亚瑟',val:'6'},
+                ],
+
                 listIndex:-1, //想让选中的数组位置
                 clickIndex:-1, //点中数组位置
-                selectList:[
-                    {txt:'我们',val:'1'},
-                    {txt:'我们3',val:'2'}
-                ],
                 radioVal: 3,
                 checkList: [1,2,4],
                 inputVal:"1",
@@ -85,6 +100,14 @@
             }
         },
         methods:{
+            getSelect(txt){
+                // selectAry.forEach(function (item) {
+                //     console.log(item.label);
+                //     console.log(item.val);
+                // })
+                console.log(txt);
+                this.packerTxt=txt;
+            },
             sortList(){
                 this.list= this.list.sort(function(){ return 0.5 - Math.random() });
                 this.getArrayIndex('2222')

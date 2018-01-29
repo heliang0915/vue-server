@@ -17,11 +17,3 @@ let getLocalIp=()=>{
     return ip;
 }
 exports.getLocalIp=getLocalIp;
-
-
-// while (true){
-//     console.log(1);
-//     while (true){
-//         console.log(2);
-//     }
-// }

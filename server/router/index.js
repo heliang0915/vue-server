@@ -2,12 +2,21 @@ import express  from 'express';
 import fs  from 'fs';
 import path  from 'path';
 import  seoMap from '../../src/seo/seoMap';
+import minify from 'html-minifier';
 const {createBundleRenderer} = require('vue-server-renderer');
-const resolve = file => path.resolve(__dirname, file)
+const resolve = file => path.resolve(__dirname, file);
+import  {env} from '../../config';
 let router=express.Router();
-const template = fs.readFileSync(path.join(__dirname,'../template/template.html'),'utf-8');
+let template = fs.readFileSync(path.join(__dirname,'../template/template.html'),'utf-8');
 const serverBundle = require('../../dist/vue-ssr-server-bundle.json');
 const clientManifest = require('../../dist/vue-ssr-client-manifest.json');
+//压缩html代码
+var reg=/\s+(?=<)|\s+$|\(?<=>\)\s+/g;
+
+if(env!="development"){
+    template=template.replace(reg,'');
+}
+
 
 let renderer=createBundleRenderer(serverBundle,{
     template,
@@ -170,15 +179,24 @@ router.route("*").all((req,res,next)=>{
         title: '默认标题',
         url:req.originalUrl
     }
-    console.log(`req.originalUrl>>>>${req.originalUrl}`);
+    // console.log(`req.originalUrl>>>>${req.originalUrl}`);
     context=mergeContext(context,req.originalUrl);
     const s = Date.now()
     renderer.renderToString(context, (err, html) => {
-        console.log(`render`)
+        // console.log(`render`+minify)
+        if(env!="development"){
+            html=minify.minify(html,{
+                collapseWhitespace:true,
+                removeEmptyAttributes:true,
+                minifyJS:true,
+                minifyCSS:true
+            })
+        }
         if (err) {
             next(err);
         } else {
             // console.log(context.state);
+
             res.end(html);
         }
     })

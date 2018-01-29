@@ -936,3 +936,17 @@ ul {
 .recommend-books .side-item:nth-last-child(1) {
   border-bottom: 0;
 }
+
+
+/*这里是使用绝对定位*/
+#app{
+  position: relative;
+}
+.pos{
+  position: absolute;
+  top:0;
+  left:0;
+  background: #FFF;
+  width: 100%;
+}
+/**/

@@ -1,11 +1,14 @@
 /**
- * 转发请求
+ * 服务端接口转发
  */
 import fetch from 'isomorphic-fetch';
-let apiURl="https://api.github.com";
+// let apiURl="https://api.github.com";
+import {env,conf} from '../../config';
 
+
+//转发请求
 export default function(url){
-    // url=apiURl+url;
+    let apiURl=conf.api;
     if(url.indexOf("/api/")>-1){
         let urlReg=/(\/\w+)/;
         let  query="";

@@ -1,17 +1,28 @@
 <template>
     <div id="app">
-        <router-view></router-view>
+        <transition name="fade-router" mode="in-out">
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
+        </transition>
     </div>
 </template>
 <script>
     import '../assets/css/common';
 </script>
 <style>
+    .fade-router-enter-active,.fade-router-leave-active{
+        transition: all .5s ease-in-out;
+    }
 
-    /*body{*/
-        /*background: blue;*/
-    /*}*/
-    /*p{*/
-        /*font-size:100px;*/
-    /*}*/
+    .fade-router-enter{
+        transform:translateX(100%);
+    }
+    .fade-router-leave{
+        transform:translateX(-100%);
+    }
+
+    .fade-router-enter,.fade-router-leave-active{
+        opacity: 0;
+    }
 </style>

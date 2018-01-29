@@ -21,4 +21,3 @@ let isProd=(env!="development");
 module.exports={
     conf,env,isProd,isServer,cacheTime,templateName
 }
-// export {conf,env,isProd,isServer,cacheTime,templateName};

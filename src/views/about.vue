@@ -1,19 +1,25 @@
 <template>
-    <section>
+    <section class="pos">
         about
         <i></i>
         <img src="../../assets/images/banner1.jpg" alt="">
         <div class="scroll">
-            <ul v-scroll :style="{marginTop:marginTop+'px'}">
-                <li>1111</li>
-                <li>333</li>
-                <li>333</li>
-                <li>33</li>
-                <li>4555</li>
-                <li>666</li>
-                <li>333</li>
-                <li>333</li>
-            </ul>
+            <!--<ul v-scroll :style="{marginTop:marginTop+'px'}">-->
+                <!--<li>e1111</li>-->
+                <!--<li>333</li>-->
+                <!--<li>333</li>-->
+                <!--<li>33</li>-->
+                <!--<li>4555</li>-->
+            <!--</ul>-->
+        </div>
+        <button @click="changeList">button</button>
+        <div>
+
+            <transition-group name="list2" tag="div">
+                <div v-for="item in list" class="item2" :key="item">
+                  {{item}}
+                </div>
+            </transition-group>
         </div>
         <!--<div class="item">-->
             <!--<Radio label="篮球" @radioChange="change" :checkVal=radioVal :val=1></Radio>-->
@@ -34,20 +40,28 @@
         </div>
         <div>
             <transition name="m">
-                <p v-show="isShow">改变~~~~~</p>
+                <p v-show="isShow">改变1~~~~~</p>
             </transition>
-            <button @click="changeShow">改变2</button>
+            <button @click="changeShow">改变q2</button>
         </div>
+        <router-link to="/weight">返回</router-link>
+        <input type="text" v-focus.a.b.c="isShow">
+        <input type="text" data-drink-time="tea" id="abc">
+        {{isShow|filterVal}}
+
+        <banner></banner>
     </section>
 </template>
 <style>
+    /*body{*/
+        /*background: red;*/
+    /*}*/
     .scroll {
         overflow: hidden;
         height: 200px;
         width: 400px;
         border: 1px solid #ccc;
     }
-
     .scroll li {
         line-height: 24px;
     }
@@ -55,6 +69,7 @@
     .item {
         overflow: hidden;
     }
+
 
     i {
         background: url("../../assets/images/banner1.jpg") no-repeat;
@@ -104,7 +119,6 @@
            color: yellow;
         }
     }
-
     .m-enter-active{
         animation:myAnimate 9s ;
     }
@@ -112,14 +126,49 @@
         animation:myAnimate 9s reverse;
     }
 
+    .list2-move{
+        transition: all 1s ease;
+    }
+    .list2-enter-active, .list2-leave-active {
+        transition: all .5s;
+    }
+    .list2-enter, .list2-leave-to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
+    .fadeIn-enter-active,.fadeIn-leave-active {
+        transition: all 1s ease;
+    }
+    .fadeIn-enter-active,.fadeIn-leave{
+        opacity: 1;
+    }
+    .fadeIn-enter,.fadeIn-leave-active {
+        opacity: 0;
+    }
 </style>
+
 <script>
     import Check from '../weight/form/check/check';
     import Radio from '../weight/form/radio/radio';
     import XInput from '../weight/form/input/Input';
     import xDraw from '../weight/draw/draw';
+    import banner from '../weight/banner/banner';
+
+    let mixin={
+        mounted(){
+            console.log("全局的mixin");
+        },
+        filters:{
+            filterVal(val){
+                return val+"--过滤--";
+            }
+        }
+    }
+
+
     export default {
+        mixins:[mixin],
         data() {
             return {
                 isShow: false,
@@ -127,10 +176,19 @@
                 radioVal: 3,
                 checkList: [],
                 val: '123',
-                animateIndex:-1
+                animateIndex:-1,
+                list:['a','b','c','d']
             }
         },
         methods: {
+            changeList(){
+              console.log("changeList>>>>");
+//              this.list=this.list.reverse();
+//              setTimeout(()=>{
+                  this.list.push(1);
+//              },1000)
+
+            },
             changeShow() {
                 this.isShow = !this.isShow;
             },
@@ -161,24 +219,39 @@
         },
 
         mounted() {
-            console.log(this);
+            console.log("组件的方法");
+            let dom=document.querySelector("#abc");
+            console.log(dom.dataset.drinkTime);
         },
-        directives: {
-            scroll: {
-                bind: function (el, binding, vnode) {
-//                    var item = el;
-//                    var lis = el.children;
-//                    var vm = vnode.context;
-//                    setInterval(() => {
-//                        vm.marginTop -= 1;
-//                    }, 100)
-                }
-            }
-        },
+//        directives: {
+//            scroll: {
+//                bind: function (el, binding, vnode) {
+////                    var item = el;
+////                    var lis = el.children;
+////                    var vm = vnode.context;
+////                    setInterval(() => {
+////                        vm.marginTop -= 1;
+////                    }, 100)
+//                }
+//            }
+//        },
         components: {
             Radio,
             Check,
-            XInput
+            XInput,
+            banner
+        },
+
+        directives:{
+            focus:{
+                bind(el,binding){
+                    console.log("el......"+el);
+                    console.log("binding......"+JSON.stringify(binding));
+                    el.focus();
+                    el.style.backgroundColor="red";
+                }
+            }
+
         }
     }
 </script>

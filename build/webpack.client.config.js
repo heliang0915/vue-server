@@ -1,5 +1,5 @@
 /**
- * 服务端配置 用于生成 客户端bundle.json文件
+ *  用于生成 客户端bundle.json文件
  */
 require('babel-register');
 var webpack=require("webpack");
@@ -11,7 +11,7 @@ const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const config = merge(base, {
     entry: {
         app: './src/entry-client.js',
-        libs:['vue','vue-router','axios','vuex']
+        libs:['vue','vue-router','axios','vuex'] //依赖库
     },
     plugins: [
         // 设置全局的环境变量 代码中可以直接使用设置的环境变量

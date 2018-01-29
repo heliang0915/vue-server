@@ -6,6 +6,7 @@ const vueConfig = require('./vue-loader.config');
 var ExtractTextPlugin=require("extract-text-webpack-plugin");
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+var HtmlWebpackPlugin=require("html-webpack-plugin");
 var webpack=require("webpack");
 
 //定义公共路径
@@ -50,6 +51,10 @@ module.exports = {
                 options: vueConfig
             },
             {
+                test: /\.html$/,
+                loader: 'html-loader?minimize=true',
+            },
+            {
                 test: /\.js$/,
                 loader: 'babel-loader?cacheDirectory', //启用babel缓存
                 exclude: /node_modules/ //指定这些js不用babel-loader解析
@@ -83,11 +88,14 @@ module.exports = {
             new webpack.optimize.UglifyJsPlugin({
                 compress: { warnings: false }
             }),
+            // new HtmlWebpackPlugin({
+            //     compress: { warnings: false }
+            // }),
             new ExtractTextPlugin({
                 filename: 'common.[chunkhash].css'
             })
         ]
         :
-        [ new OpenBrowserPlugin({ url: 'http://localhost:4000' }),new FriendlyErrorsPlugin()]
+        [ new OpenBrowserPlugin({ url: 'http://localhost:4000/about' }),new FriendlyErrorsPlugin()]
 }
  

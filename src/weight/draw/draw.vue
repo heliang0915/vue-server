@@ -2,7 +2,6 @@
     <div>
         <ul class="card-list">
             <li v-for="(item,index) in list" class="card-item" @click="animatePage(index)">
-
                 <div v-if="animateIndex==index" class="card-item-container">
                     <div :class="{'animate':(animateIndex==index),'card':true}">
                         <div class="box front">{{frontTxt}}</div>
@@ -30,7 +29,6 @@
         float: left;
         margin: 10px;
     }
-
     .card-item-container {
         width: 100px;
         height: 150px;
@@ -54,6 +52,7 @@
         height: 100%;
         position: absolute;
         color: #fff;
+        /*隐藏旋转元素的背面不可见*/
         backface-visibility: hidden;
     }
 
