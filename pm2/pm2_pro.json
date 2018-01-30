@@ -2,8 +2,8 @@
  * 生产环境下的部署配置
  */
 {
-  "name"             : "react-server",
-  "script"           : "build/server/app.js",
+  "name"             : "vue-server",
+  "script"           : "server/app.js",
   "log_date_format"  : "YYYY-MM-DD HH:mm:ss Z",
   "error_file"       : "pm2/logs/error.log",
   "out_file"         : "pm2/logs/access.log",

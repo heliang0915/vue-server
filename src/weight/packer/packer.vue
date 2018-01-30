@@ -214,17 +214,11 @@
                 var _self = this;
                 var items = _self.getItems();
                 var size = _self.getSize();
-
-
-
-
                 [].slice.apply(items).forEach(function (item, ind) {
 
                     item.style.WebkitTransform = "translate3d(0,-" + (ind + 1 + ind * 2) * size + "px,0)";
                     item.translateY = -index * size;
                     _self.selectedItem(item);
-
-
                 })
             },
 

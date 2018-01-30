@@ -11,12 +11,10 @@ let template = fs.readFileSync(path.join(__dirname,'../template/template.html'),
 const serverBundle = require('../../dist/vue-ssr-server-bundle.json');
 const clientManifest = require('../../dist/vue-ssr-client-manifest.json');
 //压缩html代码
-var reg=/\s+(?=<)|\s+$|\(?<=>\)\s+/g;
-
-if(env!="development"){
-    template=template.replace(reg,'');
-}
-
+// var reg=/\s+(?=<)|\s+$|\(?<=>\)\s+/g;
+// if(env!="development"){
+//     template=template.replace(reg,'');
+// }
 
 let renderer=createBundleRenderer(serverBundle,{
     template,
@@ -185,12 +183,14 @@ router.route("*").all((req,res,next)=>{
     renderer.renderToString(context, (err, html) => {
         // console.log(`render`+minify)
         if(env!="development"){
+            //压缩html代码
             html=minify.minify(html,{
                 collapseWhitespace:true,
                 removeEmptyAttributes:true,
                 minifyJS:true,
                 minifyCSS:true
             })
+
         }
         if (err) {
             next(err);
