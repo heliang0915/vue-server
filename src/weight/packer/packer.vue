@@ -9,7 +9,7 @@
             <div class="dp-container">
                 <span class="dp-split"></span>
                 <ul class="dp-list">
-                    <li class="dp-item" :ref="'item_'+key" v-for="(item,key) in packerData" @touchmove="touchMoveFn"
+                    <li class="dp-item" :data-group="id" :data-key="key"  :ref="'item_'+key" v-for="(item,key) in packerData" @touchmove="touchMoveFn"
                         @touchend="touchEndFn" @touchstart="touchStartFn">
                         <div :data-val="pk.val" v-for="pk in item">
                             {{pk.label}}
@@ -113,13 +113,16 @@
     export default {
         name: 'x-packer',
         props: {
+            id:{
+                type: String
+            },
             packerData: {
                 type: Object,
                 default: []
             },
-            callbackField:{
+            valueField:{
                 type:String,
-                default:''
+                default:""
             },
             selectVal:{
                 type:String,
@@ -128,6 +131,10 @@
             separator:{
                 type:String,
                 default:" "
+            },
+            packerVal:{
+                type:String,
+                default:""
             }
         },
         data() {
@@ -143,11 +150,14 @@
                 if (this.dialogTran == -100) {
                     this.dialogTran = 0;
                     this.mask = true;
-                    this.scrollMove(2);
+                    this.setPickerVal();
+                    this.$emit("open");
+                    // this.scrollMove([2,3,5])
                 } else {
                     this.dialogTran = -100;
                     this.mask = false;
-                    this.scrollMove(0);
+                    this.setPickerVal();
+                    this.$emit("close");
                 }
             },
             okHandler: function () {
@@ -195,7 +205,8 @@
                 dom.translateY = pos;
             },
             getItems: function () {
-                var items = document.querySelectorAll(".dp-item");
+                var group=this.id;
+                var items = document.querySelectorAll('[data-group='+group+']');
                 return items;
             },
             getSize: function () {
@@ -208,25 +219,61 @@
                 var _self = this;
                 e.preventDefault();
                 _self.selectedItem(dom);
+                var ary=this.getSelected();
+                var key=dom.dataset.key;
+                var selectIndex ="";
+                var val ="";
+                if(_self.$refs['item_' + key]){
+                     selectIndex = _self.$refs['item_' + key][0].getAttribute('selectIndex');
+                     val = _self.packerData[key][selectIndex][this.valueField];
+                }
+                this.$emit('getSelectByScroll',val,key,ary)
             },
             //滚动动作
-            scrollMove: function (index) {
+            scrollMove: function (indexs) {
                 var _self = this;
                 var items = _self.getItems();
                 var size = _self.getSize();
                 [].slice.apply(items).forEach(function (item, ind) {
-
-                    item.style.WebkitTransform = "translate3d(0,-" + (ind + 1 + ind * 2) * size + "px,0)";
+                    var index=indexs[ind]==undefined?0:indexs[ind];
+                    item.style.WebkitTransform = "translate3d(0,-" + index* size + "px,0)";
                     item.translateY = -index * size;
                     _self.selectedItem(item);
                 })
             },
-
-            //获取要设置滚动位置的索引
-            getSetValIndex(){
-                this.selectVal
+            //设置组件值
+            setPickerVal(indexAry){
+                var indexs=this.duplicateIndex();
+                if(indexs==null&&indexAry==null){
+                    indexs=[];
+                }
+                if(indexAry){
+                    indexs=indexAry;
+                }
+                console.log(indexs);
+                this.scrollMove(indexs);
             },
+            //去重索引
+            duplicateIndex(){
+                var newIndexs=[];
+                var _this=this;
+                if(this.packerVal) {
+                    var vals = _this.packerVal.split(_this.separator);
+                    vals.forEach((val) => {
+                        Object.keys(_this.packerData).forEach((key, index) => {
+                            _this.packerData[key].forEach((item, ind) => {
+                                if (item[_this.valueField] == val) {
+                                    if(newIndexs.indexOf(ind)==-1){
+                                        newIndexs.push(ind);
+                                    }
+                                }
+                            })
+                        })
 
+                    })
+                }
+                return newIndexs;
+            },
             //最后选中元素
             selectedItem: function (dom) {
                 var size = this.getSize();
@@ -245,7 +292,9 @@
                 for (var i = 0; i < dom.children.length; i++) {
                     dom.children[i].className = "";
                 }
-                dom.children[index].className = "dp-active";
+                if(dom&&dom.children&&dom.children[index]){
+                    dom.children[index].className = "dp-active";
+                }
 
             },
             //获取选中列表长度
@@ -263,9 +312,15 @@
                 var _self = this;
                 var selectAry = [];
                 Object.keys(this.packerData).forEach(function (key, index) {
+                    // if( _self.$refs['item_' + key][0]){
+                    //
+                    // }
                     var selectIndex = _self.$refs['item_' + key][0].getAttribute('selectIndex');
                     var selectItemData = _self.packerData[key][selectIndex];
+                    selectItemData.index=selectIndex;
                     selectAry.push(selectItemData);
+
+
                 })
                 return selectAry;
             },
@@ -273,8 +328,12 @@
                 var selectAry=this.getSelected();
                 var txt="";
                 var _this=this;
-                selectAry.forEach(function(item){
-                    txt +=_this.separator+item[_this.callbackField]
+                selectAry.forEach(function(item,index){
+                    if(index==0){
+                        txt +=item[_this.valueField];
+                    }else{
+                        txt +=_this.separator+item[_this.valueField];
+                    }
                 })
                 return txt;
             }

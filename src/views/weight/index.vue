@@ -47,9 +47,18 @@
         <!--</div>-->
 
         <div class="item">
-            <x-packer :packerData="packerData" callbackField="label" @getSelect="getSelect" ></x-packer>
+            <x-packer separator="*" id="aaa" :packerVal="packerTxt" :packerData="packerData" valueField="label" @getSelect="getSelect" ></x-packer>
             <label>选中的值:{{packerTxt}}</label>
         </div>
+        <!--<div class="item">-->
+            <!--<x-date-packer id="myPacker"></x-date-packer>-->
+            <!--<x-date-packer id="myPacker2"></x-date-packer>-->
+        <!--</div>-->
+
+        <!--<div class="item">-->
+            <!--data-packer-->
+            <!--<x-date-packer id="myPacker2"></x-date-packer>-->
+        <!--</div>-->
     </div>
 </template>
 <style>
@@ -64,6 +73,8 @@
     import XSelect from '../../weight/form/select/Select';
     import XDraw from '../../weight/draw/draw';
     import XPacker from '../../weight/packer/packer';
+    import XDatePacker from '../../weight/datepicker/datepicker';
+
     export default {
         data(){
             return {
@@ -165,7 +176,8 @@
             XInput,
             XPacker,
             // XRadio,
-            XSelect
+            XSelect,
+            XDatePacker
         }
     }
 
