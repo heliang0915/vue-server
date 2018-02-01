@@ -1,6 +1,6 @@
 import express from 'express';
 import  path from 'path';
-import debug from 'morgan';
+// import debug from 'morgan';
 import  cookieParser from 'cookie-parser';
 import  bodyParser from 'body-parser';
 import {env,cacheTime} from '../config';
@@ -19,7 +19,7 @@ useLog(App);
 App.use(compression({
     threshold:0
 }));
-App.use(debug('dev'));
+// App.use(debug('dev'));
 App.use(cookieParser());
 App.use(bodyParser.json());
 App.use(bodyParser.urlencoded({extended:false}));

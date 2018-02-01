@@ -7,10 +7,12 @@ let templateName="template";
 let config={
     development:{
         port:4000,
+        host:'http://localhost',
         api:'http://localhost:4000/api'
     },
     production:{
         port:5000,
+        host:'http://localhost',
         api:'http://localhost:5000/api'
     }
 };
