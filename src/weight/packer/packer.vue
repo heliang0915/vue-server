@@ -1,7 +1,7 @@
 <template>
     <div>
         <button @click="changeState">Packer</button>
-        <div class="dp-wrap" :style="{transform: 'translate('+dialogTran+'%)'}" v-cloak>
+        <div class="dp-wrap" :style="{transform: 'translate(0,'+dialogTran+'%)'}" v-cloak>
             <div class="dp-title">
                 <span class="dp-btn dp-lf" @click="cancelHandler">取消</span>
                 <span class="dp-btn ok dp-lr" @click="okHandler">确定</span>
@@ -37,6 +37,7 @@
         width: 100%;
         background: #FFF;
         z-index: 2;
+        transition:all .2s linear;
     }
 
     .dp-active {
@@ -140,21 +141,21 @@
         data() {
             return {
                 selectTxt:'',
-                dialogTran: '-100',
+                dialogTran: '100',
                 mask: false,
                 active: false
             }
         },
         methods: {
             changeState: function () {
-                if (this.dialogTran == -100) {
+                if (this.dialogTran == 100) {
                     this.dialogTran = 0;
                     this.mask = true;
                     this.setPickerVal();
                     this.$emit("open");
                     // this.scrollMove([2,3,5])
                 } else {
-                    this.dialogTran = -100;
+                    this.dialogTran = 100;
                     this.mask = false;
                     this.setPickerVal();
                     this.$emit("close");
