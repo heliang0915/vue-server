@@ -49,7 +49,7 @@ App.use(function(req, res, next) {
 // will print stacktrace
 if (App.get('env') === 'development') {
     App.use(function(err, req, res, next) {
-        console.log(err);
+        // console.log(err);
         if (err.code === 404){
             res.status(404).end('Not Found')
         }else{

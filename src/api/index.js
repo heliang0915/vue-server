@@ -8,7 +8,7 @@ let APIBase=`${host}:${port}`;
 
 const getIndexData=(cb)=>{
     return fetch.get(`${APIBase}/data`).then((res)=>res.data).then((data)=>{
-        console.log("data>>"+data);
+        // console.log("data>>"+data);
         cb(data);
     });
 }

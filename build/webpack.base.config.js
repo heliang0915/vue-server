@@ -96,6 +96,6 @@ module.exports = {
             })
         ]
         :
-        [ new OpenBrowserPlugin({ url: 'http://localhost:4000/about' }),new FriendlyErrorsPlugin()]
+        [ new OpenBrowserPlugin({ url: 'http://localhost:4000' }),new FriendlyErrorsPlugin()]
 }
  

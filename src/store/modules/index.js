@@ -46,7 +46,10 @@ const actions={
 
 //定义getters
 const getters={
-    getIndexList:state=>state.index
+    getIndexList:state=>{
+        // console.log(state);
+        return state
+    }
 }
 
 export default {

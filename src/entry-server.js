@@ -13,19 +13,19 @@ export default  context=>{
                 reject({ code: 404 })
             }
             let ary=matchedComponents.map(component => {
-                if (component.asyncData) {
+                if (component&&component.asyncData) {
                     return component.asyncData(store)
                 }
             })
             const s = Date.now()
             Promise.all(ary).then(() => {
-                // console.log(`data pre-fetch: ${Date.now() - s}ms`)
+                console.log(`请求耗时: ${Date.now() - s}ms`)
                 // console.log(`store.state>>>>${JSON.stringify(store.state)}`)
                 context.state = store.state;
                 resolve(app)
             }).catch((err)=>{
                 reject(err);
-                console.log(err);
+                // console.log(err);
             })
         }, reject)
     })
